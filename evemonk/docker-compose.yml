@@ -21,7 +21,7 @@ services:
       - '443:443'
 
   redis:
-    image: 'redis:5.0.4'
+    image: 'redis:5.0.5'
     container_name: evemonk_redis
     restart: unless-stopped
     volumes:
@@ -59,7 +59,7 @@ services:
       - cadvisor
 
   node_exporter:
-    image: 'prom/node-exporter:v0.17.0'
+    image: 'prom/node-exporter:v0.18.0'
     container_name: evemonk_node_exporter
     volumes:
       - /proc:/host/proc:ro
@@ -87,7 +87,7 @@ services:
     restart: unless-stopped
 
   alertmanager:
-    image: 'prom/alertmanager:v0.16.2'
+    image: 'prom/alertmanager:v0.17.0'
     container_name: evemonk_alertmanager
     ports:
       - '9093:9093'
