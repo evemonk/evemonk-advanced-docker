@@ -56,7 +56,7 @@ services:
       - 'postresql_data:/var/lib/postgresql/data'
 
   prometheus:
-    image: 'prom/prometheus:v2.9.2'
+    image: 'prom/prometheus:v2.10.0'
     container_name: evemonk_prometheus
     volumes:
       - './docker/prometheus/:/etc/prometheus/'
@@ -114,7 +114,7 @@ services:
       - '--storage.path=/alertmanager'
 
   grafana:
-    image: 'grafana/grafana:6.1.6'
+    image: 'grafana/grafana:6.2.0'
     container_name: evemonk_grafana
     user: '104'
     restart: unless-stopped
