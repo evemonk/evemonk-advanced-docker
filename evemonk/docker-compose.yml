@@ -114,7 +114,7 @@ services:
       - '--storage.path=/alertmanager'
 
   grafana:
-    image: 'grafana/grafana:6.2.0'
+    image: 'grafana/grafana:6.2.1'
     container_name: evemonk_grafana
     user: '104'
     restart: unless-stopped
