@@ -74,7 +74,7 @@ services:
       - cadvisor
 
   node_exporter:
-    image: 'prom/node-exporter:v0.18.0'
+    image: 'prom/node-exporter:v0.18.1'
     container_name: evemonk_node_exporter
     volumes:
       - /proc:/host/proc:ro
