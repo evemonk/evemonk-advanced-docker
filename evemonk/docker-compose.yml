@@ -59,7 +59,7 @@ services:
     image: 'prom/prometheus:v2.10.0'
     container_name: evemonk_prometheus
     volumes:
-      - './docker/prometheus/:/etc/prometheus/'
+      - './prometheus/:/etc/prometheus/'
       - 'prometheus_data:/prometheus'
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -107,7 +107,7 @@ services:
     ports:
       - '9093:9093'
     volumes:
-      - './docker/alertmanager/:/etc/alertmanager/'
+      - './alertmanager/:/etc/alertmanager/'
     restart: unless-stopped
     command:
       - '--config.file=/etc/alertmanager/config.yml'
@@ -124,9 +124,9 @@ services:
       - '3001:3000' # 3001 is external
     volumes:
       - 'grafana_data:/var/lib/grafana'
-      - './docker/grafana/provisioning/:/etc/grafana/provisioning/'
+      - './grafana/provisioning/:/etc/grafana/provisioning/'
     env_file:
-      - './docker/grafana/config.monitoring'
+      - './grafana/config.monitoring'
 
   elasticsearch:
     image: 'elasticsearch:7.1.1'
