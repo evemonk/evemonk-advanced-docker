@@ -144,6 +144,10 @@ services:
 #      - postgresql
 #      - redis
 
+  pghero:
+    image: 'biow0lf/evemonk-pghero:latest'
+    container_name: evemonk_pghero
+
   backend:
     image: 'biow0lf/evemonk:latest'
     container_name: evemonk_backend
