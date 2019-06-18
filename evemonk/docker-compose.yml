@@ -102,17 +102,17 @@ services:
       - '/sys:/sys:ro'
       - '/var/lib/docker/:/var/lib/docker:ro'
 
-#  alertmanager:
-#    image: 'prom/alertmanager:v0.17.0'
-#    container_name: evemonk_alertmanager
-#    restart: unless-stopped
-#    ports:
-#      - '9093:9093'
-#    volumes:
-#      - './alertmanager/:/etc/alertmanager/'
-#    command:
-#      - '--config.file=/etc/alertmanager/config.yml'
-#      - '--storage.path=/alertmanager'
+  alertmanager:
+    image: 'prom/alertmanager:v0.17.0'
+    container_name: evemonk_alertmanager
+    restart: unless-stopped
+    ports:
+      - '9093:9093'
+    volumes:
+      - './alertmanager/:/etc/alertmanager/'
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
 
 #  grafana:
 #    image: 'grafana/grafana:6.2.2'
