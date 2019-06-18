@@ -1,13 +1,14 @@
 version: '3.7'
 
 volumes:
-  postresql_data:
-  redis_data:
-  app_shared:
-  elasticsearch_data:
-  https_portal:
-  prometheus_data:
-  grafana_data:
+  postresql_data: {}
+  redis_data: {}
+  app_shared: {}
+  pghero_shared: {}
+  elasticsearch_data: {}
+  https_portal: {}
+  prometheus_data: {}
+  grafana_data: {}
 
 services:
   nginx:
@@ -16,6 +17,7 @@ services:
     restart: unless-stopped
     volumes:
       - 'app_shared:/shared'
+      - 'pghero_shared:/shared2'
       - './nginx-evemonk.conf:/etc/nginx/conf.d/default.conf:ro'
     depends_on:
       - backend
@@ -34,7 +36,7 @@ services:
       DOMAINS: 'evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
-                pghero.evemonk.com -> http://pghero:3000'
+                pghero.evemonk.com -> http://nginx'
 
   redis:
     image: 'redis:5.0.5'
@@ -148,6 +150,8 @@ services:
     container_name: evemonk_pghero
     restart: unless-stopped
     env_file: .env
+    volumes:
+      - 'pghero_shared:/shared'
     depends_on:
       - postgresql
 
