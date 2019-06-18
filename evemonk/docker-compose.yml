@@ -36,7 +36,8 @@ services:
       DOMAINS: 'evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
-                pghero.evemonk.com -> http://nginx'
+                pghero.evemonk.com -> http://nginx,
+                grafana.evemonk.com -> http://grafana:3000'
 
   redis:
     image: 'redis:5.0.5'
@@ -116,8 +117,6 @@ services:
     user: '104'
     depends_on:
       - prometheus
-    ports:
-      - '3001:3000' # 3001 is external
     volumes:
       - 'grafana_data:/var/lib/grafana'
       - './grafana/provisioning/:/etc/grafana/provisioning/'
