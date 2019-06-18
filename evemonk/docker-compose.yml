@@ -109,20 +109,20 @@ services:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
 
-#  grafana:
-#    image: 'grafana/grafana:6.2.2'
-#    container_name: evemonk_grafana
-#    restart: unless-stopped
-#    user: '104'
-#    depends_on:
-#      - prometheus
-#    ports:
-#      - '3001:3000' # 3001 is external
-#    volumes:
-#      - 'grafana_data:/var/lib/grafana'
-#      - './grafana/provisioning/:/etc/grafana/provisioning/'
-#    env_file:
-#      - './grafana/config.monitoring'
+  grafana:
+    image: 'grafana/grafana:6.2.2'
+    container_name: evemonk_grafana
+    restart: unless-stopped
+    user: '104'
+    depends_on:
+      - prometheus
+    ports:
+      - '3001:3000' # 3001 is external
+    volumes:
+      - 'grafana_data:/var/lib/grafana'
+      - './grafana/provisioning/:/etc/grafana/provisioning/'
+    env_file:
+      - './grafana/config.monitoring'
 
   elasticsearch:
     image: 'elasticsearch:7.1.1'
