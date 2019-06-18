@@ -72,10 +72,6 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     ports:
       - '9090:9090'
-    depends_on:
-      - backend
-      - cadvisor
-      - node_exporter
 
   node_exporter:
     image: 'prom/node-exporter:v0.18.1'
