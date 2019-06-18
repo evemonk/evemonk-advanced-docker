@@ -33,7 +33,8 @@ services:
       STAGE: 'production'
       DOMAINS: 'evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
-                cadvisor.evemonk.com -> http://cadvisor:8080'
+                cadvisor.evemonk.com -> http://cadvisor:8080,
+                pghero.evemonk.com -> http://pghero:3000'
 
   redis:
     image: 'redis:5.0.5'
@@ -142,9 +143,11 @@ services:
 #      - postgresql
 #      - redis
 
-#  pghero:
-#    image: 'biow0lf/evemonk-pghero:latest'
-#    container_name: evemonk_pghero
+  pghero:
+    image: 'biow0lf/evemonk-pghero:latest'
+    container_name: evemonk_pghero
+    restart: unless-stopped
+    env_file: .env
 
   backend:
     image: 'biow0lf/evemonk:latest'
