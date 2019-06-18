@@ -31,7 +31,8 @@ services:
       - 'https_portal:/var/lib/https-portal'
     environment:
       STAGE: 'production'
-      DOMAINS: 'evemonk.com -> http://nginx'
+      DOMAINS: 'evemonk.com -> http://nginx,
+                cadvisor.evemonk.com -> http://cadvisor'
 
   redis:
     image: 'redis:5.0.5'
@@ -96,8 +97,6 @@ services:
       - '/var/run:/var/run:rw'
       - '/sys:/sys:ro'
       - '/var/lib/docker/:/var/lib/docker:ro'
-    ports:
-      - '8080:8080'
 
 #  alertmanager:
 #    image: 'prom/alertmanager:v0.17.0'
