@@ -32,6 +32,7 @@ services:
     environment:
       STAGE: 'production'
       DOMAINS: 'evemonk.com -> http://nginx,
+                www.evemonk.com => https://evemonk.com,
                 cadvisor.evemonk.com -> http://cadvisor:8080'
 
   redis:
