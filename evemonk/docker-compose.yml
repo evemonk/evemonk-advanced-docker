@@ -110,6 +110,11 @@ services:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
 
+#  karma:
+#    image: 'lmierzwa/karma:v0.39'
+#    container_name: evemonk_karma
+#    restart: unless-stopped
+
   grafana:
     image: 'grafana/grafana:6.2.4'
     container_name: evemonk_grafana
