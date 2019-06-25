@@ -138,6 +138,13 @@ services:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
 
+  logstash:
+    image: 'logstash:7.1.1'
+    container_name: evemonk_logstash
+    restart: unless-stopped
+    depends_on:
+      - 'elasticsearch'
+
 #  sentry:
 #    image: ''
 #    depends_on:
