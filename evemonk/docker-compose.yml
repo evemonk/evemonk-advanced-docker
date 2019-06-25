@@ -135,13 +135,20 @@ services:
     volumes:
       - 'elasticsearch_data:/usr/share/elasticsearch/data'
     environment:
-      - discovery.type=single-node
-      - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
+      - 'discovery.type=single-node'
+      - 'ES_JAVA_OPTS=-Xms256M -Xmx256M'
 
   logstash:
     image: 'logstash:7.1.1'
     container_name: evemonk_logstash
     restart: unless-stopped
+    volumes:
+      - './logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro'
+      - './logstash/pipeline:/usr/share/logstash/pipeline:ro'
+    ports:
+      - '5000:5000'
+    environment:
+      - 'LS_JAVA_OPTS=-Xmx256m -Xms256m'
     depends_on:
       - 'elasticsearch'
 
