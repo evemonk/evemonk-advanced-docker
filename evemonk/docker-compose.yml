@@ -23,7 +23,7 @@ services:
       - backend
 
   https_portal:
-    image: steveltn/https-portal:1.7.1
+    image: 'steveltn/https-portal:1.7.1'
     container_name: evemonk_https_portal
     restart: unless-stopped
     ports:
@@ -116,7 +116,7 @@ services:
 #    restart: unless-stopped
 
   grafana:
-    image: 'grafana/grafana:6.2.4'
+    image: 'grafana/grafana:6.2.5'
     container_name: evemonk_grafana
     restart: unless-stopped
     user: '104'
