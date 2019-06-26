@@ -129,7 +129,7 @@ services:
       - './grafana/config.monitoring'
 
   elasticsearch:
-    image: 'elasticsearch:7.1.1'
+    image: 'elasticsearch:7.2.0'
     container_name: evemonk_elasticsearch
     restart: unless-stopped
     volumes:
