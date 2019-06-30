@@ -188,6 +188,7 @@ services:
       - memcached
       - postgresql
       - elasticsearch
+      - prerender
 #      - sentry
     ports:
       - '3000:3000'
