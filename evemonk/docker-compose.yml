@@ -99,7 +99,7 @@ services:
       - '/var/lib/docker/:/var/lib/docker:ro'
 
   alertmanager:
-    image: 'prom/alertmanager:v0.17.0'
+    image: 'prom/alertmanager:v0.18.0'
     container_name: evemonk_alertmanager
     restart: unless-stopped
     ports:
