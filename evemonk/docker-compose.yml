@@ -62,7 +62,7 @@ services:
       - './postgres:/docker-entrypoint-initdb.d'
 
   prometheus:
-    image: 'prom/prometheus:v2.10.0'
+    image: 'prom/prometheus:v2.11.1'
     container_name: evemonk_prometheus
     restart: unless-stopped
     volumes:
