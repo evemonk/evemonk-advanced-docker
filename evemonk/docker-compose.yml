@@ -204,6 +204,7 @@ services:
       - '5100:5100'
     command: ./bin/sidekiq.sh
     volumes:
+      - 'app_shared:/shared'
       - './newrelic.yml:/app/config/newrelic.yml:ro'
     depends_on:
       - redis
