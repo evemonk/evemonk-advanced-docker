@@ -54,7 +54,7 @@ services:
     depends_on:
       - redis
     command:
-      - 'redis.addr=redis://redis:6379'
+      - '--redis.addr=redis://redis:6379'
 
   memcached:
     image: 'memcached:1.5.16'
