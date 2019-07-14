@@ -84,6 +84,8 @@ services:
     container_name: evemonk_postgres_exporter
     restart: unless-stopped
     env_file: .env_postgres_exporter
+    depends_on:
+      - postgresql
 
   prometheus:
     image: 'prom/prometheus:v2.11.1'
