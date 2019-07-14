@@ -79,6 +79,12 @@ services:
       - 'postresql_data:/var/lib/postgresql/data'
       - './postgres:/docker-entrypoint-initdb.d'
 
+  postgres_exporter:
+    image: 'wrouesnel/postgres_exporter:v0.5.1'
+    container_name: evemonk_postgres_exporter
+    restart: unless-stopped
+    env_file: .env_postgres_exporter
+
   prometheus:
     image: 'prom/prometheus:v2.11.1'
     container_name: evemonk_prometheus
