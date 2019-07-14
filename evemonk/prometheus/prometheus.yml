@@ -84,4 +84,4 @@ scrape_configs:
     metrics_path: '/metrics'
     static_configs:
       - targets:
-        - 'memcached_exporter:9106'
+        - 'memcached_exporter:9150'
