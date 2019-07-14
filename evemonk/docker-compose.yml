@@ -53,6 +53,15 @@ services:
     restart: unless-stopped
     command: memcached -m 64
 
+  memcached_exporter:
+    image: 'prom/memcached-exporter:v0.5.0'
+    container_name: evemonk_memcached_exporter
+    restart: unless-stopped
+    depends_on:
+      - memcached
+    command:
+      - '--memcached.address=memcached:11211'
+
   postgresql:
     image: 'postgres:11.4'
     container_name: evemonk_postgresql
