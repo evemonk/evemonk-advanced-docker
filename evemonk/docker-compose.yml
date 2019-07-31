@@ -187,6 +187,8 @@ services:
       - './kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro'
     depends_on:
       - elasticsearch
+    ports:
+      - '5601:5601'
 
 #  sentry:
 #    image: ''
@@ -226,8 +228,6 @@ services:
       - elasticsearch
       - prerender
 #      - sentry
-    ports:
-      - '3000:3000'
 
   sidekiq:
     image: 'biow0lf/evemonk:latest'
