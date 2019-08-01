@@ -224,6 +224,7 @@ services:
       - memcached
       - postgresql
       - elasticsearch
+      - logstash
       - prerender
 #      - sentry
 
@@ -245,4 +246,5 @@ services:
       - memcached
       - postgresql
       - elasticsearch
+      - logstash
 #      - sentry
