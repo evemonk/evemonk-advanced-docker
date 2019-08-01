@@ -165,6 +165,15 @@ services:
       - 'discovery.type=single-node'
       - 'ES_JAVA_OPTS=-Xms256M -Xmx256M'
 
+  elasticsearch_exporter:
+    image: 'justwatch/elasticsearch_exporter:1.0.2'
+    container_name: evemonk_elasticsearch_exporter
+    command:
+      - '-es.uri=http://elasticsearch:9200'
+    restart: unless-stopped
+    ports:
+      - '9114:9114'
+
   logstash:
     image: 'docker.elastic.co/logstash/logstash:7.3.0'
     container_name: evemonk_logstash
