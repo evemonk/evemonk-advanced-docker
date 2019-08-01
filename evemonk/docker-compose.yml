@@ -166,7 +166,7 @@ services:
       - 'ES_JAVA_OPTS=-Xms256M -Xmx256M'
 
   logstash:
-    image: 'logstash:7.2.0'
+    image: 'docker.elastic.co/logstash/logstash:7.3.0'
     container_name: evemonk_logstash
     restart: unless-stopped
     volumes:
