@@ -160,7 +160,7 @@ services:
     container_name: evemonk_elasticsearch
     restart: unless-stopped
     volumes:
-      - './elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro'
+      # - './elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro'
       - 'elasticsearch_data:/usr/share/elasticsearch/data'
     environment:
       - 'discovery.type=single-node'
@@ -198,16 +198,16 @@ services:
     depends_on:
       - elasticsearch
 
-  filebeat:
-    image: 'docker.elastic.co/beats/filebeat:7.3.0'
-    container_name: evemonk_filebeat
-    restart: unless-stopped
-    volumes:
-      - './filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro'
-      - '/var/lib/docker/containers:/var/lib/docker/containers:ro'
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
-    depends_on:
-      - elasticsearch
+  # filebeat:
+  #   image: 'docker.elastic.co/beats/filebeat:7.3.0'
+  #   container_name: evemonk_filebeat
+  #   restart: unless-stopped
+  #   volumes:
+  #     - './filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro'
+  #     - '/var/lib/docker/containers:/var/lib/docker/containers:ro'
+  #     - '/var/run/docker.sock:/var/run/docker.sock:ro'
+  #   depends_on:
+  #     - elasticsearch
 
 #  sentry:
 #    image: ''
