@@ -172,8 +172,6 @@ services:
     command:
       - '-es.uri=http://elasticsearch:9200'
     restart: unless-stopped
-    ports:
-      - '9114:9114'
 
   logstash:
     image: 'docker.elastic.co/logstash/logstash:7.3.0'
