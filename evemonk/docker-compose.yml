@@ -167,7 +167,7 @@ services:
       - 'ES_JAVA_OPTS=-Xms256M -Xmx256M'
 
   elasticsearch_exporter:
-    image: 'justwatch/elasticsearch_exporter:1.0.2'
+    image: 'justwatch/elasticsearch_exporter:1.1.0'
     container_name: evemonk_elasticsearch_exporter
     command:
       - '-es.uri=http://elasticsearch:9200'
