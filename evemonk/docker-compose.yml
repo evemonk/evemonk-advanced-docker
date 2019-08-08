@@ -143,7 +143,7 @@ services:
 #    restart: unless-stopped
 
   grafana:
-    image: 'grafana/grafana:6.3.0'
+    image: 'grafana/grafana:6.3.2'
     container_name: evemonk_grafana
     restart: unless-stopped
     user: '104'
