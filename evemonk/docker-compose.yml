@@ -35,7 +35,7 @@ services:
       STAGE: 'production'
       DOMAINS: 'evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
-                imageproxy.evemonk.com -> http://imageproxy:8080,
+                imageproxy.evemonk.com -> http://imageproxy:8081,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
                 pghero.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
@@ -214,7 +214,9 @@ services:
     image: 'willnorris/imageproxy:v0.9.0'
     container_name: evemonk_imageproxy
     restart: unless-stopped
-    command: imageproxy -baseURL https://imageserver.eveonline.com/
+    command:
+      - '-baseURL https://imageserver.eveonline.com/'
+      - '-addr 0.0.0.0:8081'
 
 #  sentry:
 #    image: ''
