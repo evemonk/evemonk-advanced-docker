@@ -214,9 +214,7 @@ services:
     image: 'willnorris/imageproxy:v0.9.0'
     container_name: evemonk_imageproxy
     restart: unless-stopped
-    environment:
-      IMAGEPROXY_ADDR: '0.0.0.0:8081'
-      IMAGEPROXY_USERAGENT: 'EveMonk image proxy cache (https://evemonk.com/)'
+    command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
 
 #  sentry:
 #    image: ''
