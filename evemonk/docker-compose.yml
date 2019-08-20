@@ -34,6 +34,7 @@ services:
     environment:
       STAGE: 'production'
       DOMAINS: 'evemonk.com -> http://nginx,
+                api.evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
                 imageproxy.evemonk.com -> http://imageproxy:8081,
                 prerender.evemonk.com -> http://prerender:3000,
