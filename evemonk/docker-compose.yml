@@ -37,7 +37,6 @@ services:
                 api.evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
                 imageproxy.evemonk.com -> http://imageproxy:8081,
-                prerender.evemonk.com -> http://prerender:3000,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
                 pghero.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
@@ -250,7 +249,6 @@ services:
       - postgresql
       - elasticsearch
       - logstash
-      - prerender
 #      - sentry
 
   sidekiq:
