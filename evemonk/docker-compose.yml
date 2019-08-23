@@ -178,7 +178,7 @@ services:
       - 'elasticsearch'
 
   logstash:
-    image: 'docker.elastic.co/logstash/logstash:7.3.0'
+    image: 'docker.elastic.co/logstash/logstash:7.3.1'
     container_name: evemonk_logstash
     restart: unless-stopped
     volumes:
