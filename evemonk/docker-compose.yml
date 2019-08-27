@@ -66,7 +66,7 @@ services:
     command: memcached -m 64
 
   memcached_exporter:
-    image: 'prom/memcached-exporter:v0.5.0'
+    image: 'prom/memcached-exporter:v0.6.0'
     container_name: evemonk_memcached_exporter
     restart: unless-stopped
     depends_on:
