@@ -223,7 +223,6 @@ services:
       - memcached
       - postgresql
       - elasticsearch
-      - logstash
 #      - sentry
 
   sidekiq:
@@ -244,5 +243,4 @@ services:
       - memcached
       - postgresql
       - elasticsearch
-      - logstash
 #      - sentry
