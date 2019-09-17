@@ -37,6 +37,7 @@ services:
                 imageproxy.evemonk.com -> http://imageproxy:8081,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
                 pghero.evemonk.com -> http://nginx,
+                username:password@sidekiq.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
                 prometheus.evemonk.com -> http://prometheus:9090,
                 username:password@kibana.evemonk.com -> http://kibana:5601'
@@ -206,6 +207,16 @@ services:
       - 'pghero_shared:/shared'
     depends_on:
       - postgresql
+
+  sidekiq-web-ui:
+    image: "biow0lf/evemonk-sidekiq:latest"
+    container_name: evemonk_sidekiq_web_ui
+    restart: unless-stopped
+    env_file: .env
+    command: ./bin/app.sh
+    depends_on:
+      - postgresql
+      - redis
 
   backend:
     image: 'biow0lf/evemonk:latest'
