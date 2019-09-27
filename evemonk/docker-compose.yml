@@ -9,6 +9,7 @@ volumes:
   https_portal: {}
   prometheus_data: {}
   grafana_data: {}
+  portainer_data: {}
 
 services:
   nginx:
@@ -34,6 +35,7 @@ services:
       DOMAINS: 'evemonk.com -> http://nginx,
                 api.evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
+                portainer.evemonk.com -> http://portainer:9000,
                 imageproxy.evemonk.com -> http://imageproxy:8081,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
                 pghero.evemonk.com -> http://nginx,
@@ -190,6 +192,17 @@ services:
     container_name: evemonk_imageproxy
     restart: unless-stopped
     command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
+
+  portainer:
+    image: "portainer/portainer:1.22.0"
+    container_name: evemonk_portainer
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "8000:8000"
+    volumes:
+      - 'portainer_data:/data'
+      - '/var/run/docker.sock:/var/run/docker.sock'
 
 #  sentry:
 #    image: ''
