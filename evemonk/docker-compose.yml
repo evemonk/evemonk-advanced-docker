@@ -31,16 +31,16 @@ services:
 
   https_portal:
     image: "steveltn/https-portal:1.7.3"
-    container_name: evemonk_https_portal
-    restart: unless-stopped
+    container_name: "evemonk_https_portal"
+    restart: "unless-stopped"
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     volumes:
-      - 'https_portal:/var/lib/https-portal'
+      - "https_portal:/var/lib/https-portal"
     environment:
-      STAGE: 'production'
-      DOMAINS: 'evemonk.com -> http://nginx,
+      STAGE: "production"
+      DOMAINS: "evemonk.com -> http://nginx,
                 static.evemonk.com -> http://nginx_static,
                 api.evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
@@ -51,28 +51,28 @@ services:
                 username:password@sidekiq.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
                 prometheus.evemonk.com -> http://prometheus:9090,
-                username:password@kibana.evemonk.com -> http://kibana:5601'
+                username:password@kibana.evemonk.com -> http://kibana:5601"
 
   redis:
-    image: 'redis:5.0.6'
-    container_name: evemonk_redis
-    restart: unless-stopped
+    image: "redis:5.0.6"
+    container_name: "evemonk_redis"
+    restart: "unless-stopped"
     volumes:
-      - 'redis_data:/data'
+      - "redis_data:/data"
 
   redis_exporter:
-    image: 'oliver006/redis_exporter:v1.3.1'
-    container_name: evemonk_redis_exporter
-    restart: unless-stopped
+    image: "oliver006/redis_exporter:v1.3.1"
+    container_name: "evemonk_redis_exporter"
+    restart: "unless-stopped"
     depends_on:
       - redis
     command:
       - '--redis.addr=redis://redis:6379'
 
   memcached:
-    image: 'memcached:1.5.19'
-    container_name: evemonk_memcached
-    restart: unless-stopped
+    image: "memcached:1.5.19"
+    container_name: "evemonk_memcached"
+    restart: "unless-stopped"
     command: memcached -m 64
 
   memcached_exporter:
