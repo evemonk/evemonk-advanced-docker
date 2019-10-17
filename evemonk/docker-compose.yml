@@ -155,51 +155,51 @@ services:
 #    restart: unless-stopped
 
   grafana:
-    image: 'grafana/grafana:6.4.3'
-    container_name: evemonk_grafana
-    restart: unless-stopped
-    user: '104'
+    image: "grafana/grafana:6.4.3"
+    container_name: "evemonk_grafana"
+    restart: "unless-stopped"
+    user: "104"
     depends_on:
       - prometheus
     volumes:
-      - 'grafana_data:/var/lib/grafana'
-      - './grafana/provisioning/:/etc/grafana/provisioning/'
+      - "grafana_data:/var/lib/grafana"
+      - "./grafana/provisioning/:/etc/grafana/provisioning/"
     env_file:
-      - './grafana/config.monitoring'
+      - "./grafana/config.monitoring"
 
   elasticsearch:
-    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.4.0'
-    container_name: evemonk_elasticsearch
-    restart: unless-stopped
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.4.0"
+    container_name: "evemonk_elasticsearch"
+    restart: "unless-stopped"
     volumes:
-      # - './elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro'
-      - 'elasticsearch_data:/usr/share/elasticsearch/data'
+      # - "./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
+      - "elasticsearch_data:/usr/share/elasticsearch/data"
     environment:
-      - 'discovery.type=single-node'
-      - 'ES_JAVA_OPTS=-Xms256M -Xmx256M'
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
 
   elasticsearch_exporter:
-    image: 'justwatch/elasticsearch_exporter:1.1.0'
-    container_name: evemonk_elasticsearch_exporter
+    image: "justwatch/elasticsearch_exporter:1.1.0"
+    container_name: "evemonk_elasticsearch_exporter"
     command:
-      - '--es.uri=http://elasticsearch:9200'
-    restart: unless-stopped
+      - "--es.uri=http://elasticsearch:9200"
+    restart: "unless-stopped"
     depends_on:
-      - 'elasticsearch'
+      - "elasticsearch"
 
   kibana:
-    image: 'docker.elastic.co/kibana/kibana:7.4.0'
-    container_name: evemonk_kibana
-    restart: unless-stopped
+    image: "docker.elastic.co/kibana/kibana:7.4.0"
+    container_name: "evemonk_kibana"
+    restart: "unless-stopped"
     volumes:
-      - './kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro'
+      - "./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro"
     depends_on:
-      - elasticsearch
+      - "elasticsearch"
 
   imageproxy:
-    image: 'willnorris/imageproxy:v0.9.0'
-    container_name: evemonk_imageproxy
-    restart: unless-stopped
+    image: "willnorris/imageproxy:v0.9.0"
+    container_name: "evemonk_imageproxy"
+    restart: "unless-stopped"
     command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
 
   portainer:
