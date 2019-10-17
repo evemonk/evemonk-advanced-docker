@@ -76,26 +76,26 @@ services:
     command: memcached -m 64
 
   memcached_exporter:
-    image: 'prom/memcached-exporter:v0.6.0'
-    container_name: evemonk_memcached_exporter
-    restart: unless-stopped
+    image: "prom/memcached-exporter:v0.6.0"
+    container_name: "evemonk_memcached_exporter"
+    restart: "unless-stopped"
     depends_on:
       - memcached
     command:
-      - '--memcached.address=memcached:11211'
+      - "--memcached.address=memcached:11211"
 
   postgresql:
-    image: 'postgres:11.5'
-    container_name: evemonk_postgresql
-    restart: unless-stopped
+    image: "postgres:11.5"
+    container_name: "evemonk_postgresql"
+    restart: "unless-stopped"
     volumes:
-      - 'postresql_data:/var/lib/postgresql/data'
-      - './postgres:/docker-entrypoint-initdb.d'
+      - "postresql_data:/var/lib/postgresql/data"
+      - "./postgres:/docker-entrypoint-initdb.d"
 
   postgres_exporter:
-    image: 'wrouesnel/postgres_exporter:v0.5.1'
-    container_name: evemonk_postgres_exporter
-    restart: unless-stopped
+    image: "wrouesnel/postgres_exporter:v0.5.1"
+    container_name: "evemonk_postgres_exporter"
+    restart: "unless-stopped"
     env_file: .env_postgres_exporter
     depends_on:
       - postgresql
