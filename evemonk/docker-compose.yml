@@ -213,13 +213,6 @@ services:
       - "portainer_data:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
-  watchtower:
-    image: "containrrr/watchtower:0.3.9"
-    container_name: "evemonk_watchtower"
-    restart: "unless-stopped"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-
 #  sentry:
 #    image: ''
 #    depends_on:
