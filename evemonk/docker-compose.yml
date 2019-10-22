@@ -65,9 +65,9 @@ services:
     container_name: "evemonk_redis_exporter"
     restart: "unless-stopped"
     depends_on:
-      - redis
+      - "redis"
     command:
-      - '--redis.addr=redis://redis:6379'
+      - "--redis.addr=redis://redis:6379"
 
   memcached:
     image: "memcached:1.5.19"
@@ -80,7 +80,7 @@ services:
     container_name: "evemonk_memcached_exporter"
     restart: "unless-stopped"
     depends_on:
-      - memcached
+      - "memcached"
     command:
       - "--memcached.address=memcached:11211"
 
@@ -98,7 +98,7 @@ services:
     restart: "unless-stopped"
     env_file: .env_postgres_exporter
     depends_on:
-      - postgresql
+      - "postgresql"
 
   prometheus:
     image: "prom/prometheus:v2.13.1"
@@ -160,7 +160,7 @@ services:
     restart: "unless-stopped"
     user: "104"
     depends_on:
-      - prometheus
+      - "prometheus"
     volumes:
       - "grafana_data:/var/lib/grafana"
       - "./grafana/provisioning/:/etc/grafana/provisioning/"
@@ -254,7 +254,7 @@ services:
       - "memcached"
       - "postgresql"
       - "elasticsearch"
-#      - sentry
+#      - "sentry"
 
   sidekiq:
     image: "biow0lf/evemonk:latest"
@@ -274,4 +274,4 @@ services:
       - "memcached"
       - "postgresql"
       - "elasticsearch"
-#      - sentry
+#      - "sentry"
