@@ -99,7 +99,7 @@ services:
       - "./postgres:/docker-entrypoint-initdb.d"
 
   postgres_exporter:
-    image: "wrouesnel/postgres_exporter:v0.5.1"
+    image: "wrouesnel/postgres_exporter:v0.7.0"
     container_name: "evemonk_postgres_exporter"
     restart: "unless-stopped"
     env_file: .env_postgres_exporter
