@@ -29,10 +29,10 @@ services:
       - "/srv/static:/var/www"
       - "./nginx-static.conf:/etc/nginx/conf.d/default.conf:ro"
 
-  blog:
-    image: "biow0lf/evemonk-blog:latest"
-    container_name: "evemonk_blog"
-    restart: "unless-stopped"
+#  blog:
+#    image: "biow0lf/evemonk-blog:latest"
+#    container_name: "evemonk_blog"
+#    restart: "unless-stopped"
 
   https_portal:
     image: "steveltn/https-portal:1.7.3"
