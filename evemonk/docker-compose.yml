@@ -91,7 +91,7 @@ services:
       - "--memcached.address=memcached:11211"
 
   postgresql:
-    image: "postgres:12.0"
+    image: "postgres:12.1"
     container_name: "evemonk_postgresql"
     restart: "unless-stopped"
     volumes:
