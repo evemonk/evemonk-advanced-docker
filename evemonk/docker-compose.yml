@@ -10,6 +10,9 @@ volumes:
   prometheus_data: {}
   grafana_data: {}
   portainer_data: {}
+  maildata: {}
+  mailstate: {}
+  maillogs: {}
 
 services:
   nginx:
@@ -224,6 +227,26 @@ services:
 #    depends_on:
 #      - postgresql
 #      - redis
+
+  mail:
+    image: "tvial/docker-mailserver:latest"
+    hostname: "mail"
+    domainname: "evemonk.com"
+    container_name: "evemonk_mail"
+    restart: "unless-stopped"
+    ports:
+      - "25:25"
+      - "143:143"
+      - "587:587"
+      - "993:993"
+    volumes:
+      - "maildata:/var/mail"
+      - "mailstate:/var/mail-state"
+      - "maillogs:/var/log/mail"
+      - "./mail/config/:/tmp/docker-mailserver/"
+    env_file:
+      - ".env_mail"
+      - "mail/env-mailserver"
 
   pghero:
     image: "biow0lf/evemonk-pghero:latest"
