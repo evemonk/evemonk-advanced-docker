@@ -236,9 +236,6 @@ services:
     restart: "unless-stopped"
     ports:
       - "25:25"
-      - "143:143"
-      - "587:587"
-      - "993:993"
     volumes:
       - "maildata:/var/mail"
       - "mailstate:/var/mail-state"
