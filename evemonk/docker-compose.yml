@@ -37,6 +37,11 @@ services:
 #    container_name: "evemonk_blog"
 #    restart: "unless-stopped"
 
+  blog:
+    image: "nginx:1.16.1"
+    container_name: "evemonk_blog"
+    restart: "unless-stopped"
+
   https_portal:
     image: "steveltn/https-portal:1.8.0"
     container_name: "evemonk_https_portal"
