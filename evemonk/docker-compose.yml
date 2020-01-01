@@ -110,7 +110,7 @@ services:
       - "postgresql"
 
   prometheus:
-    image: "prom/prometheus:v2.14.0"
+    image: "prom/prometheus:v2.15.1"
     container_name: "evemonk_prometheus"
     restart: "unless-stopped"
     volumes:
@@ -244,6 +244,9 @@ services:
     env_file:
       - ".env_mail"
       - "mail/env-mailserver"
+
+#    ssl_certificate /var/lib/https-portal/evemonk.com/production/chained.crt;
+#    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
 
   pghero:
     image: "biow0lf/evemonk-pghero:latest"
