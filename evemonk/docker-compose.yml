@@ -220,9 +220,6 @@ services:
     image: "portainer/portainer:1.23.0"
     container_name: "evemonk_portainer"
     restart: "unless-stopped"
-    ports:
-      - "9000:9000"
-      - "8000:8000"
     volumes:
       - "portainer_data:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
