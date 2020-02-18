@@ -53,6 +53,7 @@ services:
       - "https_portal:/var/lib/https-portal"
     environment:
       STAGE: "production"
+      WEBSOCKET: "true"
       DOMAINS: "evemonk.com -> http://nginx,
                 blog.evemonk.com -> http://blog,
                 static.evemonk.com -> http://nginx_static,
