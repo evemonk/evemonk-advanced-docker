@@ -170,7 +170,7 @@ services:
 #    restart: unless-stopped
 
   grafana:
-    image: "grafana/grafana:6.6.1"
+    image: "grafana/grafana:6.6.2"
     container_name: "evemonk_grafana"
     restart: "unless-stopped"
     user: "104"
