@@ -12,5 +12,5 @@ systemctl stop docker
 systemctl start docker
 docker-compose up -d
 
-docker system prune --all
+docker system prune --all --force
 
