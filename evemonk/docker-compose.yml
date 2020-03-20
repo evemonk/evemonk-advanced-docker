@@ -43,7 +43,7 @@ services:
     restart: "unless-stopped"
 
   https_portal:
-    image: "steveltn/https-portal:1.10.0"
+    image: "steveltn/https-portal:1.10.1"
     container_name: "evemonk_https_portal"
     restart: "unless-stopped"
     ports:
