@@ -85,7 +85,7 @@ services:
       - "--redis.addr=redis://redis:6379"
 
   memcached:
-    image: "memcached:1.6.1"
+    image: "memcached:1.6.2"
     container_name: "evemonk_memcached"
     restart: "unless-stopped"
     command: memcached -m 64
