@@ -152,6 +152,9 @@ services:
       - "/sys:/sys:ro"
       - "/var/lib/docker/:/var/lib/docker:ro"
 
+#  blackbox_exporter:
+#    image: "prom/blackbox-exporter:v0.16.0"
+
   alertmanager:
     image: "prom/alertmanager:v0.20.0"
     container_name: "evemonk_alertmanager"
@@ -281,7 +284,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20200326:/app/static:ro"
+      - "/srv/static/sde-20200331:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
@@ -302,7 +305,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20200326:/app/static:ro"
+      - "/srv/static/sde-20200331:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
@@ -319,7 +322,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20200326:/app/static:ro"
+      - "/srv/static/sde-20200331:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
