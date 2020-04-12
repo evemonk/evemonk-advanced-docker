@@ -152,8 +152,10 @@ services:
       - "/sys:/sys:ro"
       - "/var/lib/docker/:/var/lib/docker:ro"
 
-#  blackbox_exporter:
-#    image: "prom/blackbox-exporter:v0.16.0"
+  blackbox_exporter:
+    image: "prom/blackbox-exporter:v0.16.0"
+    container_name: "evemonk_blackbox_exporter"
+    restart: "unless-stopped"
 
   alertmanager:
     image: "prom/alertmanager:v0.20.0"
