@@ -300,7 +300,7 @@ services:
     restart: "unless-stopped"
     env_file: ".env"
     environment:
-      PORT: 5100
+      PORT: "5100"
     ports:
       - "5100:5100"
     command: "./bin/sidekiq.sh"
