@@ -282,7 +282,7 @@ services:
     container_name: "evemonk_backend"
     restart: "unless-stopped"
     env_file: ".env"
-    command: "./bin/backend.sh"
+    command: "./bin/backend"
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
@@ -303,7 +303,7 @@ services:
       PORT: "5100"
     ports:
       - "5100:5100"
-    command: "./bin/sidekiq.sh"
+    command: "./bin/sidekiq"
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
@@ -320,7 +320,7 @@ services:
     container_name: "evemonk_cron"
     restart: "unless-stopped"
     env_file: ".env"
-    command: "./bin/cron.sh"
+    command: "./bin/cron"
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
