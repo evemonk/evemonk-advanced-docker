@@ -261,7 +261,7 @@ services:
     container_name: "evemonk_pghero"
     restart: "unless-stopped"
     env_file: ".env"
-    command: "./bin/app.sh"
+    command: "./bin/app"
     volumes:
       - "pghero_shared:/shared"
     depends_on:
