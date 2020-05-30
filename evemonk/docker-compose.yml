@@ -223,7 +223,7 @@ services:
     command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
 
   portainer:
-    image: "portainer/portainer:1.23.2"
+    image: "portainer/portainer:1.24.0"
     container_name: "evemonk_portainer"
     restart: "unless-stopped"
     volumes:
