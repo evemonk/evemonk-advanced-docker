@@ -286,7 +286,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20200426:/app/static:ro"
+      - "/srv/static/sde-20200531:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
@@ -307,7 +307,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20200426:/app/static:ro"
+      - "/srv/static/sde-20200531:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
@@ -324,7 +324,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20200426:/app/static:ro"
+      - "/srv/static/sde-20200531:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
