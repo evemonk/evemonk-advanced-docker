@@ -268,7 +268,7 @@ services:
       - "postgresql"
 
   sidekiq-web-ui:
-    image: "biow0lf/evemonk-sidekiq:1.0.0"
+    image: "biow0lf/evemonk-sidekiq:1.0.1"
     container_name: "evemonk_sidekiq_web_ui"
     restart: "unless-stopped"
     env_file: ".env"
