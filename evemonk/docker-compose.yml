@@ -257,7 +257,7 @@ services:
 #    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
 
   pghero:
-    image: "biow0lf/evemonk-pghero:1.0.1"
+    image: "biow0lf/evemonk-pghero:1.0.2"
     container_name: "evemonk_pghero"
     restart: "unless-stopped"
     env_file: ".env"
@@ -268,7 +268,7 @@ services:
       - "postgresql"
 
   sidekiq-web-ui:
-    image: "biow0lf/evemonk-sidekiq:1.0.1"
+    image: "biow0lf/evemonk-sidekiq:1.0.2"
     container_name: "evemonk_sidekiq_web_ui"
     restart: "unless-stopped"
     env_file: ".env"
@@ -278,7 +278,7 @@ services:
       - "redis"
 
   backend:
-    image: "biow0lf/evemonk:0.2.13"
+    image: "biow0lf/evemonk:0.2.14"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
     env_file: ".env"
@@ -295,7 +295,7 @@ services:
 #      - "sentry"
 
   sidekiq:
-    image: "biow0lf/evemonk:0.2.13"
+    image: "biow0lf/evemonk:0.2.14"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
     env_file: ".env"
@@ -316,7 +316,7 @@ services:
 #      - "sentry"
 
   cron:
-    image: "biow0lf/evemonk:0.2.13"
+    image: "biow0lf/evemonk:0.2.14"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
     env_file: ".env"
