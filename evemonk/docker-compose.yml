@@ -158,7 +158,7 @@ services:
     restart: "unless-stopped"
 
   alertmanager:
-    image: "prom/alertmanager:v0.20.0"
+    image: "prom/alertmanager:v0.21.0"
     container_name: "evemonk_alertmanager"
     restart: "unless-stopped"
     ports:
