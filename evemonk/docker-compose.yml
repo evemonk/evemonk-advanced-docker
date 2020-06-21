@@ -216,11 +216,11 @@ services:
     depends_on:
       - "elasticsearch"
 
-  imageproxy:
-    image: "willnorris/imageproxy:v0.10.0"
-    container_name: "evemonk_imageproxy"
-    restart: "unless-stopped"
-    command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
+#  imageproxy:
+#    image: "willnorris/imageproxy:v0.10.0"
+#    container_name: "evemonk_imageproxy"
+#    restart: "unless-stopped"
+#    command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
 
   portainer:
     image: "portainer/portainer:1.24.0"
