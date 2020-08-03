@@ -70,7 +70,7 @@ services:
                 username:password@kibana.evemonk.com -> http://kibana:5601"
 
   redis:
-    image: "redis:6.0.5"
+    image: "redis:6.0.6"
     container_name: "evemonk_redis"
     restart: "unless-stopped"
     volumes:
