@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 
 volumes:
   postresql_data: {}
@@ -101,7 +101,7 @@ services:
       - "--memcached.address=memcached:11211"
 
   postgresql:
-    image: "postgres:12.3"
+    image: "postgres:12.4"
     container_name: "evemonk_postgresql"
     restart: "unless-stopped"
     volumes:
