@@ -279,7 +279,7 @@ services:
       - "redis"
 
   backend:
-    image: "docker.io/biow0lf/evemonk:0.3.0"
+    image: "docker.io/biow0lf/evemonk:0.3.1"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
     env_file: ".env"
@@ -296,7 +296,7 @@ services:
 #      - "sentry"
 
   sidekiq:
-    image: "docker.io/biow0lf/evemonk:0.3.0"
+    image: "docker.io/biow0lf/evemonk:0.3.1"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
     env_file: ".env"
@@ -317,7 +317,7 @@ services:
 #      - "sentry"
 
   cron:
-    image: "docker.io/biow0lf/evemonk:0.3.0"
+    image: "docker.io/biow0lf/evemonk:0.3.1"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
     env_file: ".env"
