@@ -208,7 +208,7 @@ services:
       - "elasticsearch"
 
   kibana:
-    image: "docker.elastic.co/kibana/kibana-oss:7.8.1"
+    image: "docker.elastic.co/kibana/kibana-oss:7.9.0"
     container_name: "evemonk_kibana"
     restart: "unless-stopped"
     volumes:
