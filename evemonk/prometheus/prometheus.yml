@@ -112,4 +112,4 @@ scrape_configs:
     metrics_path: '/metrics'
     static_configs:
       - targets:
-        - 'imageproxy:80'
+        - 'imageproxy:8081'
