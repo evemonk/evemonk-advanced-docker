@@ -80,8 +80,6 @@ services:
     image: "docker.io/oliver006/redis_exporter:v1.11.1"
     container_name: "evemonk_redis_exporter"
     restart: "unless-stopped"
-    depends_on:
-      - "redis"
     command:
       - "--redis.addr=redis://redis:6379"
 
@@ -95,8 +93,6 @@ services:
     image: "docker.io/prom/memcached-exporter:v0.7.0"
     container_name: "evemonk_memcached_exporter"
     restart: "unless-stopped"
-    depends_on:
-      - "memcached"
     command:
       - "--memcached.address=memcached:11211"
 
@@ -113,8 +109,6 @@ services:
     container_name: "evemonk_postgres_exporter"
     restart: "unless-stopped"
     env_file: ".env_postgres_exporter"
-    depends_on:
-      - "postgresql"
 
   prometheus:
     image: "docker.io/prom/prometheus:v2.21.0"
@@ -180,8 +174,6 @@ services:
     container_name: "evemonk_grafana"
     restart: "unless-stopped"
     user: "104"
-    depends_on:
-      - "prometheus"
     volumes:
       - "grafana_data:/var/lib/grafana"
       - "./grafana/provisioning/:/etc/grafana/provisioning/"
@@ -204,8 +196,6 @@ services:
     command:
       - "--es.uri=http://elasticsearch:9200"
     restart: "unless-stopped"
-    depends_on:
-      - "elasticsearch"
 
   kibana:
     image: "docker.elastic.co/kibana/kibana-oss:7.9.2"
@@ -213,8 +203,6 @@ services:
     restart: "unless-stopped"
     volumes:
       - "./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro"
-    depends_on:
-      - "elasticsearch"
 
   imageproxy:
     image: "docker.io/willnorris/imageproxy:v0.10.0"
@@ -264,8 +252,6 @@ services:
     command: "./bin/app"
     volumes:
       - "pghero_shared:/shared"
-    depends_on:
-      - "postgresql"
 
   sidekiq-web-ui:
     image: "docker.io/biow0lf/evemonk-sidekiq:1.0.11"
@@ -273,9 +259,6 @@ services:
     restart: "unless-stopped"
     env_file: ".env"
     command: "./bin/app"
-    depends_on:
-      - "postgresql"
-      - "redis"
 
   backend:
     image: "docker.io/biow0lf/evemonk:0.3.12"
@@ -287,12 +270,6 @@ services:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20200818:/app/static:ro"
-    depends_on:
-      - "redis"
-      - "memcached"
-      - "postgresql"
-      - "elasticsearch"
-#      - "sentry"
 
   sidekiq:
     image: "docker.io/biow0lf/evemonk:0.3.12"
@@ -308,12 +285,6 @@ services:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20200818:/app/static:ro"
-    depends_on:
-      - "redis"
-      - "memcached"
-      - "postgresql"
-      - "elasticsearch"
-#      - "sentry"
 
   cron:
     image: "docker.io/biow0lf/evemonk:0.3.12"
@@ -325,12 +296,6 @@ services:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20200818:/app/static:ro"
-    depends_on:
-      - "redis"
-      - "memcached"
-      - "postgresql"
-      - "elasticsearch"
-#      - "sentry"
 
   irregularquiz:
     image: "docker.io/biow0lf/irregularquiz:v1.0.1"
