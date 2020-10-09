@@ -1,7 +1,6 @@
 version: "3.7"
 
 volumes:
-  postresql_data: {}
   postresql13_data: {}
   redis_data: {}
   app_shared: {}
@@ -96,14 +95,6 @@ services:
     restart: "unless-stopped"
     command:
       - "--memcached.address=memcached:11211"
-
-#  postgresql:
-#    image: "docker.io/library/postgres:12.4"
-#    container_name: "evemonk_postgresql"
-#    restart: "unless-stopped"
-#    volumes:
-#      - "postresql_data:/var/lib/postgresql/data"
-#      - "./postgres:/docker-entrypoint-initdb.d"
 
   postgresql:
     image: "docker.io/library/postgres:13.0"
