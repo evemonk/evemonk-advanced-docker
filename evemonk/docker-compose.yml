@@ -67,6 +67,7 @@ services:
                 username:password@sidekiq.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
                 username:password@prometheus.evemonk.com -> http://prometheus:9090,
+                username:password@alertmanager.evemonk.com -> http://alertmanager:9093,
                 username:password@kibana.evemonk.com -> http://kibana:5601"
 
   redis:
