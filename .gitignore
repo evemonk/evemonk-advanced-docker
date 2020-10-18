@@ -1,3 +1,4 @@
 .idea/
 evemonk/.env
 evemonk/newrelic.yml
+.DS_Store
