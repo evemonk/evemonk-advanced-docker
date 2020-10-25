@@ -2,6 +2,8 @@ version: "3.7"
 
 volumes:
   postresql13_data: {}
+  plausible_db_data: {}
+  plausible_events_db_data: {}
   redis_data: {}
   app_shared: {}
   pghero_shared: {}
@@ -66,6 +68,7 @@ services:
                 pghero.evemonk.com -> http://nginx,
                 username:password@sidekiq.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
+                plausible.evemonk.com -> http://plausible:8000,
                 username:password@prometheus.evemonk.com -> http://prometheus:9090,
                 username:password@alertmanager.evemonk.com -> http://alertmanager:9093,
                 username:password@kibana.evemonk.com -> http://kibana:5601"
@@ -222,6 +225,34 @@ services:
     volumes:
       - "portainer_data:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
+
+  plausible_db:
+    image: "docker.io/library/postgres:13.0"
+    container_name: "evemonk_plausible_db"
+    restart: "unless-stopped"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    volumes:
+      - "plausible_db_data:/var/lib/postgresql/data"
+      - "./postgres:/docker-entrypoint-initdb.d"
+
+  plausible_events_db:
+    image: "docker.io/yandex/clickhouse-server:20.10.2.20"
+    container_name: "evemonk_plausible_events_db"
+    restart: "unless-stopped"
+    volumes:
+      - "plausible_events_db_data:/var/lib/clickhouse"
+    ulimits:
+      nofile:
+        soft: "262144"
+        hard: "262144"
+
+  plausible:
+    image: "docker.io/plausible/analytics:v1.1.1"
+    container_name: "evemonk_plausible"
+    restart: "unless-stopped"
+    env_file:
+      - "plausible-conf.env"
 
 #  sentry:
 #    image: ''
