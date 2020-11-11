@@ -323,7 +323,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20201103:/app/static:ro"
+      - "/srv/static/sde-20201111:/app/static:ro"
 
   sidekiq:
     image: "docker.io/biow0lf/evemonk:0.3.26"
@@ -338,7 +338,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20201103:/app/static:ro"
+      - "/srv/static/sde-20201111:/app/static:ro"
 
   cron:
     image: "docker.io/biow0lf/evemonk:0.3.26"
@@ -349,7 +349,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20201103:/app/static:ro"
+      - "/srv/static/sde-20201111:/app/static:ro"
 
   irregularquiz:
     image: "docker.io/biow0lf/irregularquiz:v1.0.1"
