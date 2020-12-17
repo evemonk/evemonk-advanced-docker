@@ -231,7 +231,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
   geoip:
-    image: "docker.io/maxmindinc/geoipupdate:v4.5"
+    image: "docker.io/maxmindinc/geoipupdate:v4.6.0"
     container_name: "evemonk_geoip"
     restart: "unless-stopped"
     environment:
