@@ -209,7 +209,7 @@ services:
     restart: "unless-stopped"
 
   kibana:
-    image: "docker.elastic.co/kibana/kibana-oss:7.10.0"
+    image: "docker.elastic.co/kibana/kibana-oss:7.10.1"
     container_name: "evemonk_kibana"
     restart: "unless-stopped"
     volumes:
