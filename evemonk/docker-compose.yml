@@ -47,6 +47,11 @@ services:
     container_name: "evemonk_blog"
     restart: "unless-stopped"
 
+#  nginx_exporter:
+#    image: "docker.io/nginx/nginx-prometheus-exporter:0.8.0"
+#    container_name: "evemonk_nginx_exporter"
+#    restart: "unless-stopped"
+
   https_portal:
     image: "docker.io/steveltn/https-portal:1.16.1"
     container_name: "evemonk_https_portal"
@@ -339,7 +344,7 @@ services:
 #    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
 
   pghero:
-    image: "docker.io/biow0lf/evemonk-pghero:1.0.24"
+    image: "docker.io/biow0lf/evemonk-pghero:1.0.25"
     container_name: "evemonk_pghero"
     restart: "unless-stopped"
     env_file: ".env"
