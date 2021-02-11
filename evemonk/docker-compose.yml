@@ -269,6 +269,7 @@ services:
         hard: 262144
 
   plausible:
+    # TODO: update to 1.2.0
     image: "docker.io/plausible/analytics:v1.1.1"
     container_name: "evemonk_plausible"
     restart: "unless-stopped"
