@@ -186,7 +186,7 @@ services:
 #    restart: unless-stopped
 
   grafana:
-    image: "docker.io/grafana/grafana:7.3.6-ubuntu"
+    image: "docker.io/grafana/grafana:7.4.1-ubuntu"
     container_name: "evemonk_grafana"
     restart: "unless-stopped"
     user: "104"
