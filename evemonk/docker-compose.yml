@@ -82,8 +82,7 @@ services:
                 username:password@kibana.evemonk.com -> http://kibana:5601"
 
   redis:
-    # TODO: redis 6.2.0
-    image: "docker.io/library/redis:6.0.11"
+    image: "docker.io/library/redis:6.2.0"
     container_name: "evemonk_redis"
     restart: "unless-stopped"
     volumes:
