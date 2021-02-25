@@ -281,7 +281,7 @@ services:
       GEOLITE2_COUNTRY_DB: "/usr/share/GeoIP/GeoLite2-Country.mmdb"
 
   teamspeak_db:
-    image: "docker.io/library/mariadb:10.5.8"
+    image: "docker.io/library/mariadb:10.5.9"
     container_name: "evemonk_teamspeak_db"
     restart: "unless-stopped"
     environment:
