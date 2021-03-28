@@ -102,7 +102,7 @@ services:
     command: "memcached -m 64"
 
   memcached_exporter:
-    image: "docker.io/prom/memcached-exporter:v0.8.0"
+    image: "docker.io/prom/memcached-exporter:v0.9.0"
     container_name: "evemonk_memcached_exporter"
     restart: "unless-stopped"
     command:
