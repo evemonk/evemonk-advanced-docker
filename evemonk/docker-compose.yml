@@ -260,7 +260,7 @@ services:
         hard: 262144
 
   plausible:
-    image: "docker.io/plausible/analytics:v1.2.0"
+    image: "docker.io/plausible/analytics:v1.2.1"
     container_name: "evemonk_plausible"
     restart: "unless-stopped"
     command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
