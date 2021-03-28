@@ -226,15 +226,6 @@ services:
     restart: "unless-stopped"
     command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
 
-  # TODO: migrate to portainer/portainer-ce
-  portainer:
-    image: "docker.io/portainer/portainer:1.24.1"
-    container_name: "evemonk_portainer"
-    restart: "unless-stopped"
-    volumes:
-      - "portainer_data:/data"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-
   geoip:
     image: "docker.io/maxmindinc/geoipupdate:v4.6.0"
     container_name: "evemonk_geoip"
