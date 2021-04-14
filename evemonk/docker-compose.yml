@@ -11,12 +11,10 @@ volumes:
   https_portal: {}
   prometheus_data: {}
   grafana_data: {}
-  portainer_data: {}
   geoip_data: {}
   maildata: {}
   mailstate: {}
   maillogs: {}
-  mariadb_data: {}
 
 services:
   nginx:
