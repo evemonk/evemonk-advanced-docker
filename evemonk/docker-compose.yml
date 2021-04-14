@@ -17,7 +17,6 @@ volumes:
   mailstate: {}
   maillogs: {}
   mariadb_data: {}
-  teamspeak_data: {}
 
 services:
   nginx:
@@ -67,7 +66,6 @@ services:
       DOMAINS: "evemonk.com -> http://nginx,
                 blog.evemonk.com -> http://blog,
                 static.evemonk.com -> http://nginx_static,
-                api.evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com,
                 irregularquiz.rpisarev.org.ua -> http://irregularquiz:5000,
                 portainer.evemonk.com -> http://portainer:9000,
@@ -270,49 +268,6 @@ services:
       - "geoip_data:/usr/share/GeoIP"
     environment:
       GEOLITE2_COUNTRY_DB: "/usr/share/GeoIP/GeoLite2-Country.mmdb"
-
-  teamspeak_db:
-    image: "docker.io/library/mariadb:10.5.9"
-    container_name: "evemonk_teamspeak_db"
-    restart: "unless-stopped"
-    environment:
-      - "MYSQL_DATABASE=teamspeak_production"
-    env_file:
-      - "teamspeak-conf.env"
-    volumes:
-      - "mariadb_data:/var/lib/mysql"
-
-  teamspeak:
-    image: "docker.io/library/teamspeak:3.13.3"
-    container_name: "evemonk_teamspeak"
-    restart: "unless-stopped"
-    environment:
-      - "TS3SERVER_LICENSE=accept"
-      - "TS3SERVER_DB_PLUGIN=ts3db_mariadb"
-      - "TS3SERVER_DB_SQLCREATEPATH=create_mariadb"
-      - "TS3SERVER_DEFAULT_VOICE_PORT=9987"
-      - "TS3SERVER_QUERY_PORT=10011"
-      - "TS3SERVER_QUERY_SSH_PORT=10022"
-      - "TS3SERVER_FILETRANSFER_PORT=30033"
-      - "TS3SERVER_DB_HOST=teamspeak_db"
-      - "TS3SERVER_DB_PORT=3306"
-      - "TS3SERVER_DB_NAME=teamspeak_production"
-      - "TS3SERVER_DB_WAITUNTILREADY=30"
-    env_file:
-      - "teamspeak-conf.env"
-    ports:
-      - "9987:9987/udp"
-      - "10011:10011"
-      - "10022:10022"
-      - "30033:30033"
-    volumes:
-      - "teamspeak_data:/var/ts3server"
-
-#  sentry:
-#    image: ''
-#    depends_on:
-#      - postgresql
-#      - redis
 
   mail:
     image: "docker.io/tvial/docker-mailserver:latest"
