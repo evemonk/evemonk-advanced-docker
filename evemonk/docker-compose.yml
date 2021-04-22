@@ -50,7 +50,7 @@ services:
 #    restart: "unless-stopped"
 
   https_portal:
-    image: "docker.io/steveltn/https-portal:1.18.0"
+    image: "docker.io/steveltn/https-portal:1.19.0"
     container_name: "evemonk_https_portal"
     restart: "unless-stopped"
     ports:
