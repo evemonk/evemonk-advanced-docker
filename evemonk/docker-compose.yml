@@ -66,7 +66,6 @@ services:
                 static.evemonk.com -> http://nginx_static,
                 www.evemonk.com => https://evemonk.com,
                 irregularquiz.rpisarev.org.ua -> http://irregularquiz:5000,
-                portainer.evemonk.com -> http://portainer:9000,
                 imageproxy.evemonk.com -> http://imageproxy:8081,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
                 pghero.evemonk.com -> http://nginx,
