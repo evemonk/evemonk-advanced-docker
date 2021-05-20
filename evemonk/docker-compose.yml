@@ -297,7 +297,7 @@ services:
       - "pghero_shared:/shared"
 
   sidekiq-web-ui:
-    image: "docker.io/biow0lf/evemonk-sidekiq:1.0.37"
+    image: "docker.io/biow0lf/evemonk-sidekiq:1.0.38"
     container_name: "evemonk_sidekiq_web_ui"
     restart: "unless-stopped"
     env_file: ".env"
