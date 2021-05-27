@@ -247,7 +247,7 @@ services:
       - "./postgres:/docker-entrypoint-initdb.d"
 
   plausible_events_db:
-    image: "docker.io/yandex/clickhouse-server:21.3.11.5"
+    image: "docker.io/yandex/clickhouse-server:21.3.12.2"
     container_name: "evemonk_plausible_events_db"
     restart: "unless-stopped"
     volumes:
