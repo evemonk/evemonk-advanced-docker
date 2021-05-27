@@ -9,6 +9,7 @@ volumes:
   pghero_shared: {}
   elasticsearch_data: {}
   https_portal: {}
+  https_logs: {}
   prometheus_data: {}
   grafana_data: {}
   geoip_data: {}
@@ -58,6 +59,7 @@ services:
       - "443:443"
     volumes:
       - "https_portal:/var/lib/https-portal"
+      - "https_logs:/var/log/nginx"
     environment:
       STAGE: "production"
       WEBSOCKET: "true"
