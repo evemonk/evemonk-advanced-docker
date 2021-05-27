@@ -61,6 +61,7 @@ services:
     environment:
       STAGE: "production"
       WEBSOCKET: "true"
+      LISTEN_IPV6: "true"
       DOMAINS: "evemonk.com -> http://nginx,
                 blog.evemonk.com -> http://blog,
                 static.evemonk.com -> http://nginx_static,
