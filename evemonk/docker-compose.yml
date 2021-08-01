@@ -296,11 +296,10 @@ services:
     env_file: ".env"
 
   sidekiq-web-ui:
-    image: "docker.io/biow0lf/evemonk-sidekiq:v1.0.43"
+    image: "docker.io/biow0lf/evemonk-sidekiq:v1.0.44"
     container_name: "evemonk_sidekiq_web_ui"
     restart: "unless-stopped"
     env_file: ".env"
-    command: "./bin/app"
 
   backend:
     image: "docker.io/biow0lf/evemonk:0.4.33"
