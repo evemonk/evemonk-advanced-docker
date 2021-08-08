@@ -6,7 +6,6 @@ volumes:
   plausible_events_db_data: {}
   redis_data: {}
   app_shared: {}
-  elasticsearch_data: {}
   https_portal: {}
   https_logs: {}
   prometheus_data: {}
@@ -191,16 +190,6 @@ services:
       - "./grafana/provisioning/:/etc/grafana/provisioning/"
     env_file:
       - "./grafana/config.monitoring"
-
-  elasticsearch:
-    image: "docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2"
-    container_name: "evemonk_elasticsearch"
-    restart: "unless-stopped"
-    volumes:
-      - "elasticsearch_data:/usr/share/elasticsearch/data"
-    environment:
-      - "discovery.type=single-node"
-      - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
 
   elasticsearch_exporter:
     image: "docker.io/justwatch/elasticsearch_exporter:1.1.0"
