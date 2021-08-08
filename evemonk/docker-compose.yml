@@ -267,6 +267,8 @@ services:
     restart: "unless-stopped"
     env_file: ".env"
     read_only: true
+    volumes:
+      - "./evemonk-pghero/newrelic.yml:/app/config/newrelic.yml:ro"
 
   sidekiq-web-ui:
     image: "docker.io/biow0lf/evemonk-sidekiq:v1.0.44"
@@ -274,6 +276,8 @@ services:
     restart: "unless-stopped"
     env_file: ".env"
     read_only: true
+    volumes:
+      - "./evemonk-sidekiq/newrelic.yml:/app/config/newrelic.yml:ro"
 
   backend:
     image: "docker.io/biow0lf/evemonk:v0.4.34"
