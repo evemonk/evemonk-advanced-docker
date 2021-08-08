@@ -289,7 +289,8 @@ services:
     env_file: ".env"
 
   backend:
-    image: "docker.io/biow0lf/evemonk:0.4.33"
+#    image: "docker.io/biow0lf/evemonk:0.4.33"
+    image: "docker.io/biow0lf/evemonk:main"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
     env_file: ".env"
@@ -300,7 +301,8 @@ services:
       - "/srv/static/sde-20210612:/app/static:ro"
 
   sidekiq:
-    image: "docker.io/biow0lf/evemonk:0.4.33"
+#    image: "docker.io/biow0lf/evemonk:0.4.33"
+    image: "docker.io/biow0lf/evemonk:main"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
     env_file: ".env"
@@ -315,7 +317,8 @@ services:
       - "/srv/static/sde-20210612:/app/static:ro"
 
   cron:
-    image: "docker.io/biow0lf/evemonk:0.4.33"
+#    image: "docker.io/biow0lf/evemonk:0.4.33"
+    image: "docker.io/biow0lf/evemonk:main"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
     env_file: ".env"
