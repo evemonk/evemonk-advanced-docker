@@ -191,13 +191,6 @@ services:
     env_file:
       - "./grafana/config.monitoring"
 
-  elasticsearch_exporter:
-    image: "docker.io/justwatch/elasticsearch_exporter:1.1.0"
-    container_name: "evemonk_elasticsearch_exporter"
-    command:
-      - "--es.uri=http://elasticsearch:9200"
-    restart: "unless-stopped"
-
   kibana:
     image: "docker.elastic.co/kibana/kibana-oss:7.10.2"
     container_name: "evemonk_kibana"
