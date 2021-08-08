@@ -281,7 +281,7 @@ services:
     command: "./bin/backend"
     volumes:
       - "app_shared:/shared"
-      - "./newrelic.yml:/app/config/newrelic.yml:ro"
+      - "./evemonk/newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20210612:/app/static:ro"
 
   sidekiq:
@@ -296,7 +296,7 @@ services:
     command: "./bin/sidekiq"
     volumes:
       - "app_shared:/shared"
-      - "./newrelic.yml:/app/config/newrelic.yml:ro"
+      - "./evemonk/newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20210612:/app/static:ro"
 
   cron:
@@ -307,7 +307,7 @@ services:
     command: "./bin/cron"
     volumes:
       - "app_shared:/shared"
-      - "./newrelic.yml:/app/config/newrelic.yml:ro"
+      - "./evemonk/newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20210612:/app/static:ro"
 
   irregularquiz:
