@@ -83,13 +83,6 @@ scrape_configs:
       - targets:
         - 'postgres_exporter:9187'
 
-  - job_name: 'elasticsearch_exporter'
-    scheme: http
-    metrics_path: '/metrics'
-    static_configs:
-      - targets:
-        - 'elasticsearch_exporter:9114'
-
   - job_name: 'imageproxy'
     scheme: http
     metrics_path: '/metrics'
