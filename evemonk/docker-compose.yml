@@ -275,7 +275,7 @@ services:
     env_file: ".env"
     read_only: true
     volumes:
-      - "./evemonk-sidekiq/newrelic.yml:/app/config/newrelic.yml:ro"
+      - "./evemonk-sidekiq-ui/newrelic.yml:/app/config/newrelic.yml:ro"
 
   backend:
     image: "docker.io/biow0lf/evemonk:v0.5.0"
