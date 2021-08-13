@@ -298,7 +298,7 @@ services:
       - "5100:5100"
     command: "./bin/sidekiq"
     volumes:
-      - "./evemonk/newrelic.yml:/app/config/newrelic.yml:ro"
+      - "./evemonk-sidekiq/newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20210808:/app/static:ro"
 
   cron:
@@ -308,7 +308,7 @@ services:
     env_file: ".env"
     command: "./bin/cron"
     volumes:
-      - "./evemonk/newrelic.yml:/app/config/newrelic.yml:ro"
+      - "./evemonk-cron/newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20210808:/app/static:ro"
 
   irregularquiz:
