@@ -281,6 +281,7 @@ services:
     image: "docker.io/biow0lf/evemonk:v0.5.1"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
+    read_only: true
     env_file: ".env"
     command: "./bin/backend"
     volumes:
@@ -305,6 +306,7 @@ services:
     image: "docker.io/biow0lf/evemonk:v0.5.1"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
+    read_only: true
     env_file: ".env"
     command: "./bin/cron"
     volumes:
