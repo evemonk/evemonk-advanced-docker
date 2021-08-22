@@ -269,7 +269,7 @@ services:
       - "./evemonk-pghero/newrelic.yml:/app/config/newrelic.yml:ro"
 
   sidekiq-web-ui:
-    image: "docker.io/biow0lf/evemonk-sidekiq:v1.0.44"
+    image: "docker.io/biow0lf/evemonk-sidekiq:v1.0.45"
     container_name: "evemonk_sidekiq_web_ui"
     restart: "unless-stopped"
     env_file: ".env"
