@@ -292,6 +292,7 @@ services:
     image: "docker.io/biow0lf/evemonk:v0.5.1"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
+#    read_only: true
     env_file: ".env"
     environment:
       PORT: "5100"
