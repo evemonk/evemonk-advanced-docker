@@ -2,6 +2,7 @@ version: "3.7"
 
 volumes:
   postresql13_data: {}
+  postresql14_data: {}
   plausible_db_data: {}
   plausible_events_db_data: {}
   redis_data: {}
