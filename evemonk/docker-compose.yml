@@ -279,7 +279,7 @@ services:
       - "./evemonk-sidekiq-ui/newrelic.yml:/app/config/newrelic.yml:ro"
 
   backend:
-    image: "docker.io/biow0lf/evemonk:v0.6.1"
+    image: "docker.io/biow0lf/evemonk:v0.6.2"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
 #    read_only: true
@@ -290,7 +290,7 @@ services:
       - "/srv/static/sde-20210808:/app/static:ro"
 
   sidekiq:
-    image: "docker.io/biow0lf/evemonk:v0.6.1"
+    image: "docker.io/biow0lf/evemonk:v0.6.2"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
 #    read_only: true
@@ -305,7 +305,7 @@ services:
       - "/srv/static/sde-20210808:/app/static:ro"
 
   cron:
-    image: "docker.io/biow0lf/evemonk:v0.6.1"
+    image: "docker.io/biow0lf/evemonk:v0.6.2"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
 #    read_only: true
