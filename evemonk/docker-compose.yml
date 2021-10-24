@@ -278,6 +278,15 @@ services:
     volumes:
       - "./evemonk-sidekiq-ui/newrelic.yml:/app/config/newrelic.yml:ro"
 
+  pg-extras:
+    image: "docker.io/biow0lf/evemonk-pg-extras:v1.0.0"
+    container_name: "evemonk_pg_extras"
+    restart: "unless-stopped"
+    env_file: ".env"
+    read_only: true
+#    volumes:
+#      - "./evemonk-sidekiq-ui/newrelic.yml:/app/config/newrelic.yml:ro"
+
   backend:
     image: "docker.io/biow0lf/evemonk:v0.6.6"
     container_name: "evemonk_backend"
