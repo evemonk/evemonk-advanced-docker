@@ -68,6 +68,7 @@ services:
                 imageproxy.evemonk.com -> http://imageproxy:8081,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
                 pghero.evemonk.com -> http://nginx,
+                pg-extras.evemonk.com -> http://nginx,
                 username:password@sidekiq.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
                 plausible.evemonk.com -> http://plausible:8000,
