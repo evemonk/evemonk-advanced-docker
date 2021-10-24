@@ -283,7 +283,7 @@ services:
     image: "docker.io/biow0lf/evemonk-pg-extras:v1.0.0"
     container_name: "evemonk_pg_extras"
     restart: "unless-stopped"
-    env_file: ".env"
+    env_file: "./evemonk-pg-extras/.env"
     read_only: true
     volumes:
       - "./evemonk-pg-extras/newrelic.yml:/app/config/newrelic.yml:ro"
