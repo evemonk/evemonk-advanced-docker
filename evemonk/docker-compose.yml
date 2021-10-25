@@ -265,10 +265,8 @@ services:
     image: "docker.io/biow0lf/evemonk-pghero:v1.0.49"
     container_name: "evemonk_pghero"
     restart: "unless-stopped"
-    env_file: ".env"
+    env_file: "./evemonk-pghero/.env"
     read_only: true
-    volumes:
-      - "./evemonk-pghero/newrelic.yml:/app/config/newrelic.yml:ro"
 
   sidekiq-web-ui:
     image: "docker.io/biow0lf/evemonk-sidekiq:v1.0.49"
