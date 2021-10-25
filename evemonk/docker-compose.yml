@@ -272,10 +272,8 @@ services:
     image: "docker.io/biow0lf/evemonk-sidekiq:v1.0.50"
     container_name: "evemonk_sidekiq_web_ui"
     restart: "unless-stopped"
-    env_file: ".env"
+    env_file: "./evemonk-sidekiq-ui/.env"
     read_only: true
-    volumes:
-      - "./evemonk-sidekiq-ui/newrelic.yml:/app/config/newrelic.yml:ro"
 
   pg-extras:
     image: "docker.io/biow0lf/evemonk-pg-extras:v1.0.1"
