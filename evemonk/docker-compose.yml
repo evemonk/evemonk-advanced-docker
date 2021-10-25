@@ -262,7 +262,7 @@ services:
 #    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
 
   pghero:
-    image: "docker.io/biow0lf/evemonk-pghero:v1.0.49"
+    image: "docker.io/biow0lf/evemonk-pghero:v1.0.50"
     container_name: "evemonk_pghero"
     restart: "unless-stopped"
     env_file: "./evemonk-pghero/.env"
