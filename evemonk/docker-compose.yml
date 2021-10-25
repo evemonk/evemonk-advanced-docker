@@ -285,8 +285,6 @@ services:
     restart: "unless-stopped"
     env_file: "./evemonk-pg-extras/.env"
     read_only: true
-    volumes:
-      - "./evemonk-pg-extras/newrelic.yml:/app/config/newrelic.yml:ro"
 
   backend:
     image: "docker.io/biow0lf/evemonk:v0.6.6"
