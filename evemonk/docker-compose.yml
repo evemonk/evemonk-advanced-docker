@@ -9,6 +9,7 @@ volumes:
   https_portal: {}
   https_logs: {}
   prometheus_data: {}
+  alertmanager_data: {}
   grafana_data: {}
   geoip_data: {}
   maildata: {}
@@ -169,6 +170,7 @@ services:
       - "9093:9093"
     volumes:
       - "./alertmanager/:/etc/alertmanager/"
+      - "alertmanager_data:/alertmanager"
     command:
       - "--config.file=/etc/alertmanager/config.yml"
       - "--storage.path=/alertmanager"
