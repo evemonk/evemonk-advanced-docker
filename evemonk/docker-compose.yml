@@ -29,7 +29,7 @@ services:
     container_name: "evemonk_nginx_static"
     restart: "unless-stopped"
     volumes:
-      - "/srv/static:/var/www"
+      - "/srv/static:/var/www:ro"
       - "./nginx-static.conf:/etc/nginx/conf.d/default.conf:ro"
 
 #  blog:
@@ -55,8 +55,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - "https_portal:/var/lib/https-portal"
-      - "https_logs:/var/log/nginx"
+      - "https_portal:/var/lib/https-portal:rw"
+      - "https_logs:/var/log/nginx:rw"
     environment:
       STAGE: "production"
       WEBSOCKET: "true"
@@ -81,7 +81,7 @@ services:
     container_name: "evemonk_redis"
     restart: "unless-stopped"
     volumes:
-      - "redis_data:/data"
+      - "redis_data:/data:rw"
 
   redis_exporter:
     image: "docker.io/oliver006/redis_exporter:v1.29.0"
@@ -110,8 +110,8 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
-      - "postresql13_data:/var/lib/postgresql/data"
-      - "./postgres:/docker-entrypoint-initdb.d"
+      - "postresql13_data:/var/lib/postgresql/data:rw"
+      - "./postgres:/docker-entrypoint-initdb.d:ro"
 
   postgres_exporter:
     image: "docker.io/wrouesnel/postgres_exporter:v0.8.0"
@@ -124,8 +124,8 @@ services:
     container_name: "evemonk_prometheus"
     restart: "unless-stopped"
     volumes:
-      - "./prometheus/:/etc/prometheus/"
-      - "prometheus_data:/prometheus"
+      - "./prometheus/:/etc/prometheus:ro"
+      - "prometheus_data:/prometheus:rw"
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
@@ -169,8 +169,8 @@ services:
     ports:
       - "9093:9093"
     volumes:
-      - "./alertmanager/:/etc/alertmanager/"
-      - "alertmanager_data:/alertmanager"
+      - "./alertmanager/:/etc/alertmanager:ro"
+      - "alertmanager_data:/alertmanager:rw"
     command:
       - "--config.file=/etc/alertmanager/config.yml"
       - "--storage.path=/alertmanager"
@@ -187,8 +187,8 @@ services:
     restart: "unless-stopped"
     user: "104"
     volumes:
-      - "grafana_data:/var/lib/grafana"
-      - "./grafana/provisioning/:/etc/grafana/provisioning/"
+      - "grafana_data:/var/lib/grafana:rw"
+      - "./grafana/provisioning/:/etc/grafana/provisioning:ro"
     env_file:
       - "./grafana/config.monitoring"
 
@@ -206,9 +206,9 @@ services:
       - "GEOIPUPDATE_EDITION_IDS=GeoLite2-Country"
       - "GEOIPUPDATE_FREQUENCY=168" # update every 7 days
     env_file:
-      - "geoip/geoip.conf"
+      - "geoip/geoip.conf:ro"
     volumes:
-      - "geoip_data:/usr/share/GeoIP"
+      - "geoip_data:/usr/share/GeoIP:rw"
 
   plausible_db:
     image: "docker.io/library/postgres:13.4"
@@ -217,15 +217,15 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
-      - "plausible_db_data:/var/lib/postgresql/data"
-      - "./postgres:/docker-entrypoint-initdb.d"
+      - "plausible_db_data:/var/lib/postgresql/data:rw"
+      - "./postgres:/docker-entrypoint-initdb.d:ro"
 
   plausible_events_db:
     image: "docker.io/yandex/clickhouse-server:21.3.18.4"
     container_name: "evemonk_plausible_events_db"
     restart: "unless-stopped"
     volumes:
-      - "plausible_events_db_data:/var/lib/clickhouse"
+      - "plausible_events_db_data:/var/lib/clickhouse:rw"
     ulimits:
       nofile:
         soft: 262144
@@ -239,7 +239,7 @@ services:
     env_file:
       - "plausible-conf.env"
     volumes:
-      - "geoip_data:/usr/share/GeoIP"
+      - "geoip_data:/usr/share/GeoIP:ro"
     environment:
       GEOLITE2_COUNTRY_DB: "/usr/share/GeoIP/GeoLite2-Country.mmdb"
 
@@ -252,13 +252,13 @@ services:
     ports:
       - "25:25"
     volumes:
-      - "maildata:/var/mail"
-      - "mailstate:/var/mail-state"
-      - "maillogs:/var/log/mail"
-      - "./mail/config/:/tmp/docker-mailserver/"
+      - "maildata:/var/mail:rw"
+      - "mailstate:/var/mail-state:rw"
+      - "maillogs:/var/log/mail:rw"
+      - "./mail/config/:/tmp/docker-mailserver:ro"
     env_file:
       - ".env_mail"
-      - "mail/env-mailserver"
+      - "./mail/env-mailserver"
 
 #    ssl_certificate /var/lib/https-portal/evemonk.com/production/chained.crt;
 #    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
