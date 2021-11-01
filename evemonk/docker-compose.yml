@@ -75,7 +75,7 @@ services:
                 irregularquiz.rpisarev.org.ua -> http://irregularquiz:5000,
                 imageproxy.evemonk.com -> http://imageproxy:8081,
                 cadvisor.evemonk.com -> http://cadvisor:8080,
-                pghero.evemonk.com -> http://nginx,
+                pghero.evemonk.com -> http://pghero_nginx,
                 pg-extras.evemonk.com -> http://nginx,
                 username:password@sidekiq.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
