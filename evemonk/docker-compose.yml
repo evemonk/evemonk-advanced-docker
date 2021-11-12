@@ -218,7 +218,7 @@ services:
       - "geoip_data:/usr/share/GeoIP:rw"
 
   plausible_db:
-    image: "docker.io/library/postgres:13.4"
+    image: "docker.io/library/postgres:13.5"
     container_name: "evemonk_plausible_db"
     restart: "unless-stopped"
     environment:
