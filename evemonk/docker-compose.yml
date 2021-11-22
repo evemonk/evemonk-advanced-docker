@@ -74,7 +74,7 @@ services:
                 www.evemonk.com => https://evemonk.com,
                 irregularquiz.rpisarev.org.ua -> http://irregularquiz:5000,
                 imageproxy.evemonk.com -> http://imageproxy:8081,
-                cadvisor.evemonk.com -> http://cadvisor:8080,
+                username:password@cadvisor.evemonk.com -> http://cadvisor:8080,
                 pghero.evemonk.com -> http://pghero_nginx,
                 pg-extras.evemonk.com -> http://nginx,
                 username:password@sidekiq.evemonk.com -> http://nginx,
