@@ -2,7 +2,7 @@
 
 set -eux
 
-docker-compose down
+docker-compose down --remove-orphans
 
 git stash
 git pull
