@@ -200,7 +200,7 @@ services:
       - "./grafana/config.monitoring"
 
   imageproxy:
-    image: "docker.io/willnorris/imageproxy:v0.10.0"
+    image: "ghcr.io/willnorris/imageproxy:v0.11.2"
     container_name: "evemonk_imageproxy"
     restart: "unless-stopped"
     command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
