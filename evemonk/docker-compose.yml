@@ -287,7 +287,7 @@ services:
     read_only: true
 
   pg-extras:
-    image: "docker.io/biow0lf/evemonk-pg-extras:v1.0.8"
+    image: "docker.io/biow0lf/evemonk-pg-extras:v1.0.9"
     container_name: "evemonk_pg_extras"
     restart: "unless-stopped"
     env_file: "./evemonk-pg-extras/.env"
