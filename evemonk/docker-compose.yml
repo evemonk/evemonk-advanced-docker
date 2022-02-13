@@ -18,7 +18,6 @@ volumes:
   mailserver_var_mail: {}
   mailserver_var_mailstate: {}
   mailserver_var_log_mail: {}
-  mailserver_etc_letsencrypt: {}
 
 services:
   nginx:
@@ -296,16 +295,12 @@ services:
       - "mailserver_var_mail:/var/mail:rw"
       - "mailserver_var_mailstate:/var/mail-state:rw"
       - "mailserver_var_log_mail:/var/log/mail:rw"
-      - "mailserver_etc_letsencrypt:/etc/letsencrypt:rw"
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       - "ENABLE_AMAVIS=0"
       - "ENABLE_SPAMASSASSIN=0"
       - "ENABLE_CLAMAV=0"
       - "ENABLE_DNSBL=1"
-      - "SSL_TYPE=letsencrypt"
-      - "SSL_DOMAIN=mail.evemonk.com"
-      - "LETSENCRYPT_DOMAIN=mail.evemonk.com"
 
   pghero:
     image: "docker.io/biow0lf/evemonk-pghero:v1.0.59"
