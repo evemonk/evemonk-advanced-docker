@@ -285,7 +285,7 @@ services:
     hostname: "mail"
     domainname: "evemonk.com"
     restart: "unless-stopped"
-    env_file: "mailserver/mailserver.env"
+    env_file: "./mailserver/mailserver.env"
     # More information about the mail-server ports:
     # https://docker-mailserver.github.io/docker-mailserver/edge/config/security/understanding-the-ports/
     ports:
@@ -302,6 +302,7 @@ services:
     environment:
       - "ENABLE_AMAVIS=0"
       - "ENABLE_DNSBL=1"
+      - "PERMIT_DOCKER=host"
       - "SSL_TYPE=manual"
       - "SSL_CERT_PATH=/var/lib/https-portal/mail.evemonk.com/production/signed.crt"
       - "SSL_KEY_PATH=/var/lib/https-portal/mail.evemonk.com/production/domain.key"
