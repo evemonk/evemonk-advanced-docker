@@ -305,6 +305,7 @@ services:
       - "SSL_TYPE=manual"
       - "SSL_CERT_PATH=/var/lib/https-portal/mail.evemonk.com/production/signed.crt"
       - "SSL_KEY_PATH=/var/lib/https-portal/mail.evemonk.com/production/domain.key"
+    command: "sleep 300000"
 
   pghero:
     image: "docker.io/biow0lf/evemonk-pghero:v1.0.59"
