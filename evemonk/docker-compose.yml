@@ -15,6 +15,9 @@ volumes:
   maildata: {}
   mailstate: {}
   maillogs: {}
+  mailserver_var_mail: {}
+  mailserver_var_mailstate: {}
+  mailserver_var_log_mail: {}
 
 services:
   nginx:
@@ -288,9 +291,9 @@ services:
       - "465:465"  # ESMTP (implicit TLS)
       - "587:587"  # ESMTP (explicit TLS => STARTTLS)
     volumes:
-#      - ./docker-data/dms/mail-data/:/var/mail/
-#      - ./docker-data/dms/mail-state/:/var/mail-state/
-#      - ./docker-data/dms/mail-logs/:/var/log/mail/
+      - "mailserver_var_mail:/var/mail:rw"
+      - "mailserver_var_mailstate:/var/mail-state:rw"
+      - "mailserver_var_log_mail:/var/log/mail:rw"
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       - ENABLE_AMAVIS=0
