@@ -18,6 +18,7 @@ volumes:
   mailserver_var_mail: {}
   mailserver_var_mailstate: {}
   mailserver_var_log_mail: {}
+  mailserver_config: {}
 
 services:
   nginx:
@@ -295,6 +296,7 @@ services:
       - "mailserver_var_mail:/var/mail:rw"
       - "mailserver_var_mailstate:/var/mail-state:rw"
       - "mailserver_var_log_mail:/var/log/mail:rw"
+      - "mailserver_config:/tmp/docker-mailserver:rw"
       - "/etc/localtime:/etc/localtime:ro"
       - "https_portal:/var/lib/https-portal:ro"
     environment:
