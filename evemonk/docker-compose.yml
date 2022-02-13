@@ -296,11 +296,15 @@ services:
       - "mailserver_var_mailstate:/var/mail-state:rw"
       - "mailserver_var_log_mail:/var/log/mail:rw"
       - "/etc/localtime:/etc/localtime:ro"
+      - "https_portal:/var/lib/https-portal:ro"
     environment:
       - "ENABLE_AMAVIS=0"
       - "ENABLE_SPAMASSASSIN=0"
       - "ENABLE_CLAMAV=0"
       - "ENABLE_DNSBL=1"
+      - "SSL_TYPE=manual"
+      - "SSL_CERT_PATH=/var/lib/https-portal/mail.evemonk.com/production/signed.crt"
+      - "SSL_KEY_PATH=/var/lib/https-portal/mail.evemonk.com/production/domain.key"
 
   pghero:
     image: "docker.io/biow0lf/evemonk-pghero:v1.0.59"
