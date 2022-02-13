@@ -272,6 +272,22 @@ services:
 ##    ssl_certificate /var/lib/https-portal/evemonk.com/production/chained.crt;
 ##    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
 
+  mailserver:
+    image: "docker.io/mailserver/docker-mailserver:10.4.0"
+    container_name: "evemonk_mailserver"
+    # If the FQDN for your mail-server is only two labels (eg: example.com),
+    # you can assign this entirely to `hostname` and remove `domainname`.
+    hostname: "mail"
+    domainname: "evemonk.com"
+    restart: "unless-stopped"
+#    env_file: mailserver.env
+    # More information about the mail-server ports:
+    # https://docker-mailserver.github.io/docker-mailserver/edge/config/security/understanding-the-ports/
+    ports:
+      - "25:25"    # SMTP  (explicit TLS => STARTTLS)
+      - "465:465"  # ESMTP (implicit TLS)
+      - "587:587"  # ESMTP (explicit TLS => STARTTLS)
+
   pghero:
     image: "docker.io/biow0lf/evemonk-pghero:v1.0.59"
     container_name: "evemonk_pghero"
