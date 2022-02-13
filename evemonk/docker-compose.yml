@@ -252,25 +252,25 @@ services:
     environment:
       GEOLITE2_COUNTRY_DB: "/usr/share/GeoIP/GeoLite2-Country.mmdb"
 
-  mail:
-    image: "docker.io/tvial/docker-mailserver:latest"
-    hostname: "mail"
-    domainname: "evemonk.com"
-    container_name: "evemonk_mail"
-    restart: "unless-stopped"
-    ports:
-      - "25:25"
-    volumes:
-      - "maildata:/var/mail:rw"
-      - "mailstate:/var/mail-state:rw"
-      - "maillogs:/var/log/mail:rw"
-      - "./mail/config/:/tmp/docker-mailserver:ro"
-    env_file:
-      - ".env_mail"
-      - "./mail/env-mailserver"
-
-#    ssl_certificate /var/lib/https-portal/evemonk.com/production/chained.crt;
-#    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
+#  mail:
+#    image: "docker.io/tvial/docker-mailserver:latest"
+#    hostname: "mail"
+#    domainname: "evemonk.com"
+#    container_name: "evemonk_mail"
+#    restart: "unless-stopped"
+#    ports:
+#      - "25:25"
+#    volumes:
+#      - "maildata:/var/mail:rw"
+#      - "mailstate:/var/mail-state:rw"
+#      - "maillogs:/var/log/mail:rw"
+#      - "./mail/config/:/tmp/docker-mailserver:ro"
+#    env_file:
+#      - ".env_mail"
+#      - "./mail/env-mailserver"
+#
+##    ssl_certificate /var/lib/https-portal/evemonk.com/production/chained.crt;
+##    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
 
   pghero:
     image: "docker.io/biow0lf/evemonk-pghero:v1.0.59"
