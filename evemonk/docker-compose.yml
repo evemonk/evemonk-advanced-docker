@@ -326,7 +326,7 @@ services:
     read_only: true
 
   backend:
-    image: "docker.io/biow0lf/evemonk:v0.6.25"
+    image: "docker.io/biow0lf/evemonk:v0.6.26"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
 #    read_only: true
@@ -337,7 +337,7 @@ services:
       - "/srv/static/sde-20220202:/app/static:ro"
 
   sidekiq:
-    image: "docker.io/biow0lf/evemonk:v0.6.25"
+    image: "docker.io/biow0lf/evemonk:v0.6.26"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
 #    read_only: true
@@ -352,7 +352,7 @@ services:
       - "/srv/static/sde-20220202:/app/static:ro"
 
   cron:
-    image: "docker.io/biow0lf/evemonk:v0.6.25"
+    image: "docker.io/biow0lf/evemonk:v0.6.26"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
 #    read_only: true
