@@ -273,9 +273,6 @@ services:
 #    env_file:
 #      - ".env_mail"
 #      - "./mail/env-mailserver"
-#
-##    ssl_certificate /var/lib/https-portal/evemonk.com/production/chained.crt;
-##    ssl_certificate_key /var/lib/https-portal/evemonk.com/production/domain.key;
 
   mailserver:
     image: "docker.io/mailserver/docker-mailserver:10.4.0"
