@@ -305,7 +305,7 @@ services:
       - "POSTMASTER_ADDRESS=igor.zubkov@gmail.com"
 
   pghero:
-    image: "docker.io/biow0lf/evemonk-pghero:v1.0.61"
+    image: "docker.io/biow0lf/evemonk-pghero:v1.1.0"
     container_name: "evemonk_pghero"
     restart: "unless-stopped"
     env_file: "./evemonk-pghero/.env"
