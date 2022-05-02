@@ -275,7 +275,7 @@ services:
 #      - "./mail/env-mailserver"
 
   mailserver:
-    image: "docker.io/mailserver/docker-mailserver:10.5.0"
+    image: "docker.io/mailserver/docker-mailserver:11.0.0"
     container_name: "evemonk_mailserver"
     # If the FQDN for your mail-server is only two labels (eg: example.com),
     # you can assign this entirely to `hostname` and remove `domainname`.
