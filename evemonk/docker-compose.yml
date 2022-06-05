@@ -19,6 +19,7 @@ volumes:
   mailserver_var_mailstate: {}
   mailserver_var_log_mail: {}
   mailserver_config: {}
+  errbit_mongodb: {}
 
 services:
   nginx:
@@ -274,6 +275,16 @@ services:
 #      - ".env_mail"
 #      - "./mail/env-mailserver"
 
+#  errbit_mongodb:
+#    image: "docker.io/library/mongo:4.0.28"
+#    container_name: "evemonk_errbit_mongodb"
+#    restart: "unless-stopped"
+
+#  errbit:
+#    image: "docker.io/errbit/errbit:latest"
+#    container_name: "evemonk_errbit"
+#    restart: "unless-stopped"
+
   mailserver:
     image: "docker.io/mailserver/docker-mailserver:11.0.0"
     container_name: "evemonk_mailserver"
@@ -333,7 +344,6 @@ services:
     env_file: ".env"
     command: "./bin/backend"
     volumes:
-#      - "./evemonk/newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20220202:/app/static:ro"
 
   sidekiq:
@@ -348,7 +358,6 @@ services:
       - "5100:5100"
     command: "./bin/sidekiq-server"
     volumes:
-#      - "./evemonk-sidekiq/newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20220202:/app/static:ro"
 
   cron:
@@ -359,7 +368,6 @@ services:
     env_file: ".env"
     command: "./bin/cron"
     volumes:
-#      - "./evemonk-cron/newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20220202:/app/static:ro"
 
   irregularquiz:
