@@ -85,6 +85,7 @@ services:
                 pg-extras.evemonk.com -> http://nginx,
                 username:password@sidekiq.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
+                errbit.evemonk.com -> http://errbit:8080,
                 plausible.evemonk.com -> http://plausible:8000,
                 username:password@prometheus.evemonk.com -> http://prometheus:9090,
                 username:password@alertmanager.evemonk.com -> http://alertmanager:9093"
@@ -282,10 +283,15 @@ services:
     volumes:
       - "errbit_mongodb:/data/db:rw"
 
-#  errbit:
-#    image: "docker.io/errbit/errbit:latest"
-#    container_name: "evemonk_errbit"
-#    restart: "unless-stopped"
+  errbit:
+    image: "docker.io/errbit/errbit:latest"
+    container_name: "evemonk_errbit"
+    restart: "unless-stopped"
+    environment:
+      - "PORT=8080"
+      - "RACK_ENV=production"
+      - "RAILS_ENV=production"
+      - "MONGO_URL=mongodb://errbit_mongodb:27017/errbit_production"
 
   mailserver:
     image: "docker.io/mailserver/docker-mailserver:11.0.0"
