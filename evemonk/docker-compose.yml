@@ -275,10 +275,12 @@ services:
 #      - ".env_mail"
 #      - "./mail/env-mailserver"
 
-#  errbit_mongodb:
-#    image: "docker.io/library/mongo:4.0.28"
-#    container_name: "evemonk_errbit_mongodb"
-#    restart: "unless-stopped"
+  errbit_mongodb:
+    image: "docker.io/library/mongo:4.0.28"
+    container_name: "evemonk_errbit_mongodb"
+    restart: "unless-stopped"
+    volumes:
+      - "errbit_mongodb:/data/db:rw"
 
 #  errbit:
 #    image: "docker.io/errbit/errbit:latest"
