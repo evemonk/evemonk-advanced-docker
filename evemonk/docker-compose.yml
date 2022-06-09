@@ -353,6 +353,7 @@ services:
     command: "./bin/backend"
     volumes:
       - "/srv/static/sde-20220202:/app/static:ro"
+      - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   sidekiq:
     image: "docker.io/biow0lf/evemonk:v0.7.9"
@@ -367,6 +368,7 @@ services:
     command: "./bin/sidekiq-server"
     volumes:
       - "/srv/static/sde-20220202:/app/static:ro"
+      - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   cron:
     image: "docker.io/biow0lf/evemonk:v0.7.9"
@@ -377,6 +379,7 @@ services:
     command: "./bin/cron"
     volumes:
       - "/srv/static/sde-20220202:/app/static:ro"
+      - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   irregularquiz:
     image: "docker.io/biow0lf/irregularquiz:v1.0.1"
