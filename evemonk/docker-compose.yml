@@ -128,7 +128,7 @@ services:
       - "./postgres:/docker-entrypoint-initdb.d:ro"
 
   postgres_exporter:
-    image: "docker.io/wrouesnel/postgres_exporter:v0.8.0"
+    image: "docker.io/prometheuscommunity/postgres-exporter:v0.10.1"
     container_name: "evemonk_postgres_exporter"
     restart: "unless-stopped"
     env_file: ".env_postgres_exporter"
