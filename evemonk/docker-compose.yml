@@ -91,7 +91,7 @@ services:
                 username:password@alertmanager.evemonk.com -> http://alertmanager:9093"
 
   redis:
-    image: "docker.io/library/redis:7.0.1"
+    image: "docker.io/library/redis:7.0.2"
     container_name: "evemonk_redis"
     restart: "unless-stopped"
     volumes:
