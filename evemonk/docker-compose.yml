@@ -352,7 +352,7 @@ services:
     env_file: ".env"
     command: "./bin/backend"
     volumes:
-      - "/srv/static/sde-20220202:/app/static:ro"
+      - "/srv/static/sde-20220716:/app/static:ro"
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   sidekiq:
@@ -367,7 +367,7 @@ services:
       - "5100:5100"
     command: "./bin/sidekiq-server"
     volumes:
-      - "/srv/static/sde-20220202:/app/static:ro"
+      - "/srv/static/sde-20220716:/app/static:ro"
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   cron:
@@ -378,7 +378,7 @@ services:
     env_file: ".env"
     command: "./bin/cron"
     volumes:
-      - "/srv/static/sde-20220202:/app/static:ro"
+      - "/srv/static/sde-20220716:/app/static:ro"
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   irregularquiz:
