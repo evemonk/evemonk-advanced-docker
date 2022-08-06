@@ -284,7 +284,7 @@ services:
       - "errbit_mongodb:/data/db:rw"
 
   errbit:
-    image: "docker.io/errbit/errbit:latest"
+    image: "docker.io/biow0lf/errbit:latest"
     container_name: "evemonk_errbit"
     restart: "unless-stopped"
     environment:
