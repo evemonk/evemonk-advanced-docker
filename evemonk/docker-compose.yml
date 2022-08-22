@@ -98,7 +98,7 @@ services:
       - "redis_data:/data:rw"
 
   redis_exporter:
-    image: "docker.io/oliver006/redis_exporter:v1.43.0"
+    image: "docker.io/oliver006/redis_exporter:v1.43.1"
     container_name: "evemonk_redis_exporter"
     restart: "unless-stopped"
     command:
