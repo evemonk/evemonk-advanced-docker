@@ -118,7 +118,7 @@ services:
       - "--memcached.address=memcached:11211"
 
   postgresql:
-    image: "docker.io/library/postgres:13.7"
+    image: "docker.io/library/postgres:13.8"
     container_name: "evemonk_postgresql"
     restart: "unless-stopped"
     environment:
