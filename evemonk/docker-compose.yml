@@ -148,7 +148,7 @@ services:
       - "--web.external-url=https://prometheus.evemonk.com/"
 
   node_exporter:
-    image: "docker.io/prom/node-exporter:v1.3.1"
+    image: "docker.io/prom/node-exporter:v1.4.0"
     container_name: "evemonk_node_exporter"
     restart: "unless-stopped"
     volumes:
