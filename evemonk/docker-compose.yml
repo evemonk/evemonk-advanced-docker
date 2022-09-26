@@ -213,7 +213,7 @@ services:
     command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
 
   geoip:
-    image: "docker.io/maxmindinc/geoipupdate:v4.9.0"
+    image: "docker.io/maxmindinc/geoipupdate:v4.10.0"
     container_name: "evemonk_geoip"
     restart: "unless-stopped"
     environment:
