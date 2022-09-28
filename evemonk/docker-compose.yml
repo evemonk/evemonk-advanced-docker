@@ -259,16 +259,16 @@ services:
     environment:
       GEOLITE2_COUNTRY_DB: "/usr/share/GeoIP/GeoLite2-Country.mmdb"
 
-  watchtower:
-    image: "docker.io/containrrr/watchtower:1.4.0"
-    environment:
-      WATCHTOWER_DEBUG: "yes"
-      WATCHTOWER_TRACE: "yes"
-      WATCHTOWER_MONITOR_ONLY: "yes"
-      WATCHTOWER_NO_PULL: "yes"
-      WATCHTOWER_POLL_INTERVAL: "300"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
+#  watchtower:
+#    image: "docker.io/containrrr/watchtower:1.4.0"
+#    environment:
+#      WATCHTOWER_DEBUG: "yes"
+#      WATCHTOWER_TRACE: "yes"
+#      WATCHTOWER_MONITOR_ONLY: "yes"
+#      WATCHTOWER_NO_PULL: "yes"
+#      WATCHTOWER_POLL_INTERVAL: "300"
+#    volumes:
+#      - "/var/run/docker.sock:/var/run/docker.sock"
 
 #  mail:
 #    image: "docker.io/tvial/docker-mailserver:latest"
