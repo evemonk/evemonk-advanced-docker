@@ -105,7 +105,7 @@ services:
       - "--redis.addr=redis://redis:6379"
 
   memcached:
-    image: "docker.io/library/memcached:1.6.17"
+    image: "docker.io/library/memcached:1.6.16"
     container_name: "evemonk_memcached"
     restart: "unless-stopped"
     command: "memcached -m 64"
