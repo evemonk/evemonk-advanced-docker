@@ -381,16 +381,16 @@ services:
       - "/srv/static/sde-20220716:/app/static:ro"
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
-#  cron:
-#    image: "docker.io/biow0lf/evemonk:v0.7.16"
-#    container_name: "evemonk_cron"
-#    restart: "unless-stopped"
-##    read_only: true
-#    env_file: ".env"
-#    command: "./bin/cron"
-#    volumes:
-#      - "/srv/static/sde-20220716:/app/static:ro"
-#      - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
+  cron:
+    image: "docker.io/biow0lf/evemonk:v0.7.16"
+    container_name: "evemonk_cron"
+    restart: "unless-stopped"
+#    read_only: true
+    env_file: ".env"
+    command: "./bin/cron"
+    volumes:
+      - "/srv/static/sde-20220716:/app/static:ro"
+      - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   irregularquiz:
     image: "docker.io/biow0lf/irregularquiz:v1.0.1"
