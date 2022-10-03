@@ -267,7 +267,7 @@ services:
     volumes:
       - "./dashy/conf.yml:/app/public/conf.yml:ro"
 
-  #  watchtower:
+#  watchtower:
 #    image: "docker.io/containrrr/watchtower:1.4.0"
 #    container_name: "evemonk_watchtower"
 #    restart: "unless-stopped"
