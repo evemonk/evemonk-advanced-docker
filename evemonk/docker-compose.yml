@@ -261,6 +261,8 @@ services:
 
 #  watchtower:
 #    image: "docker.io/containrrr/watchtower:1.4.0"
+#    container_name: "evemonk_watchtower"
+#    restart: "unless-stopped"
 #    environment:
 #      WATCHTOWER_DEBUG: "yes"
 #      WATCHTOWER_TRACE: "yes"
