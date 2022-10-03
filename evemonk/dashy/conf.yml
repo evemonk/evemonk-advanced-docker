@@ -1,0 +1,7 @@
+pageInfo:
+  title: EveMonk Dashboard
+sections:
+  - name: Services
+    items:
+      - title: EveMonk My Characters Dashboard
+        url: https://evemonk.com/characters
