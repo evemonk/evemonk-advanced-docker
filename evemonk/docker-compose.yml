@@ -272,10 +272,10 @@ services:
     container_name: "evemonk_watchtower"
     restart: "unless-stopped"
     environment:
-      WATCHTOWER_CLEANUP: "yes"
-      WATCHTOWER_DEBUG: "yes"
-      WATCHTOWER_TRACE: "yes"
-      WATCHTOWER_MONITOR_ONLY: "yes"
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_DEBUG: "true"
+      WATCHTOWER_TRACE: "true"
+      WATCHTOWER_MONITOR_ONLY: "true"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
