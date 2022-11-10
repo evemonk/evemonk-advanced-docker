@@ -29,8 +29,6 @@ services:
     restart: "unless-stopped"
     volumes:
       - "./nginx-evemonk.conf:/etc/nginx/conf.d/default.conf:ro"
-    labels:
-      - "diun.enable=true"
 
   pghero_nginx:
     image: "docker.io/library/nginx:1.22.1"
@@ -38,8 +36,6 @@ services:
     restart: "unless-stopped"
     volumes:
       - "./evemonk-pghero-nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
-    labels:
-      - "diun.enable=true"
 
   nginx_static:
     image: "docker.io/library/nginx:1.22.1"
@@ -48,8 +44,6 @@ services:
     volumes:
       - "/srv/static:/var/www:ro"
       - "./nginx-static.conf:/etc/nginx/conf.d/default.conf:ro"
-    labels:
-      - "diun.enable=true"
 
 #  blog:
 #    image: "biow0lf/evemonk-blog:latest"
@@ -60,8 +54,6 @@ services:
     image: "docker.io/library/nginx:1.22.1"
     container_name: "evemonk_blog"
     restart: "unless-stopped"
-    labels:
-      - "diun.enable=true"
 
 #  nginx_exporter:
 #    image: "docker.io/nginx/nginx-prometheus-exporter:0.8.0"
@@ -78,8 +70,6 @@ services:
     volumes:
       - "https_portal:/var/lib/https-portal:rw"
       - "https_logs:/var/log/nginx:rw"
-    labels:
-      - "diun.enable=true"
     environment:
       STAGE: "production"
       WEBSOCKET: "true"
@@ -108,8 +98,6 @@ services:
     restart: "unless-stopped"
     volumes:
       - "redis_data:/data:rw"
-    labels:
-      - "diun.enable=true"
 
   redis_exporter:
     image: "docker.io/oliver006/redis_exporter:v1.44.0"
@@ -117,16 +105,12 @@ services:
     restart: "unless-stopped"
     command:
       - "--redis.addr=redis://redis:6379"
-    labels:
-      - "diun.enable=true"
 
   memcached:
     image: "docker.io/library/memcached:1.6.17"
     container_name: "evemonk_memcached"
     restart: "unless-stopped"
     command: "memcached -m 64"
-    labels:
-      - "diun.enable=true"
 
   memcached_exporter:
     image: "docker.io/prom/memcached-exporter:v0.10.0"
@@ -134,8 +118,6 @@ services:
     restart: "unless-stopped"
     command:
       - "--memcached.address=memcached:11211"
-    labels:
-      - "diun.enable=true"
 
   postgresql:
     image: "docker.io/library/postgres:13.8"
@@ -146,8 +128,6 @@ services:
     volumes:
       - "postresql13_data:/var/lib/postgresql/data:rw"
       - "./postgres:/docker-entrypoint-initdb.d:ro"
-    labels:
-      - "diun.enable=true"
 
   postgres_exporter:
     image: "docker.io/prometheuscommunity/postgres-exporter:v0.11.1"
@@ -170,8 +150,6 @@ services:
       - "--web.console.libraries=/usr/share/prometheus/console_libraries"
       - "--web.console.templates=/usr/share/prometheus/consoles"
       - "--web.external-url=https://prometheus.evemonk.com/"
-    labels:
-      - "diun.enable=true"
 
   node_exporter:
     image: "docker.io/prom/node-exporter:v1.4.0"
@@ -186,8 +164,6 @@ services:
       - "--path.sysfs=/host/sys"
       - "--collector.filesystem.ignored-mount-points"
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
-    labels:
-      - "diun.enable=true"
 
   cadvisor:
     image: "gcr.io/google_containers/cadvisor:v0.36.0"
@@ -198,15 +174,11 @@ services:
       - "/var/run:/var/run:rw"
       - "/sys:/sys:ro"
       - "/var/lib/docker/:/var/lib/docker:ro"
-    labels:
-      - "diun.enable=true"
 
   blackbox_exporter:
     image: "docker.io/prom/blackbox-exporter:v0.22.0"
     container_name: "evemonk_blackbox_exporter"
     restart: "unless-stopped"
-    labels:
-      - "diun.enable=true"
 
   alertmanager:
     image: "docker.io/prom/alertmanager:v0.24.0"
@@ -221,8 +193,6 @@ services:
       - "--config.file=/etc/alertmanager/config.yml"
       - "--storage.path=/alertmanager"
       - "--web.external-url=https://alertmanager.evemonk.com/"
-    labels:
-      - "diun.enable=true"
 
 #  karma:
 #    image: 'lmierzwa/karma:v0.39'
@@ -239,16 +209,12 @@ services:
       - "./grafana/provisioning/:/etc/grafana/provisioning:ro"
     env_file:
       - "./grafana/config.monitoring"
-    labels:
-      - "diun.enable=true"
 
   imageproxy:
     image: "ghcr.io/willnorris/imageproxy:v0.11.2"
     container_name: "evemonk_imageproxy"
     restart: "unless-stopped"
     command: '-addr 0.0.0.0:8081 -userAgent "EveMonk image proxy cacher (https://evemonk.com/)"'
-    labels:
-      - "diun.enable=true"
 
   geoip:
     image: "docker.io/maxmindinc/geoipupdate:v4.10.0"
@@ -261,8 +227,6 @@ services:
       - "geoip/geoip.conf"
     volumes:
       - "geoip_data:/usr/share/GeoIP:rw"
-    labels:
-      - "diun.enable=true"
 
   plausible_db:
     image: "docker.io/library/postgres:13.8"
@@ -273,8 +237,6 @@ services:
     volumes:
       - "plausible_db_data:/var/lib/postgresql/data:rw"
       - "./postgres:/docker-entrypoint-initdb.d:ro"
-    labels:
-      - "diun.enable=true"
 
   plausible_events_db:
     image: "docker.io/clickhouse/clickhouse-server:22.6.9.11"
@@ -288,8 +250,6 @@ services:
       nofile:
         soft: 262144
         hard: 262144
-    labels:
-      - "diun.enable=true"
 
   plausible:
     image: "docker.io/plausible/analytics:v1.4.4"
@@ -302,8 +262,6 @@ services:
       - "geoip_data:/usr/share/GeoIP:ro"
     environment:
       GEOLITE2_COUNTRY_DB: "/usr/share/GeoIP/GeoLite2-Country.mmdb"
-    labels:
-      - "diun.enable=true"
 
   dashy:
     image: "docker.io/lissy93/dashy:2.1.1"
@@ -311,8 +269,6 @@ services:
     restart: "unless-stopped"
     volumes:
       - "./dashy/conf.yml:/app/public/conf.yml:ro"
-    labels:
-      - "diun.enable=true"
 
   watchtower:
     image: "docker.io/containrrr/watchtower:1.4.0"
@@ -325,8 +281,6 @@ services:
       WATCHTOWER_MONITOR_ONLY: "true"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-    labels:
-      - "diun.enable=true"
 
   diun:
     image: "docker.io/crazymax/diun:4.22.0"
@@ -335,13 +289,13 @@ services:
     environment:
       DIUN_NOTIF_SLACK_WEBHOOKURL: ""
       DIUN_PROVIDERS_DOCKER: "true"
+      DIUN_WATCH_FIRSTCHECKNOTIF: "true"
+      DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT: "true"
       DIUN_WATCH_SCHEDULE: "*/10 * * * *"
 #      DIUN_WATCH_SCHEDULE: "25 0 * * *"
     volumes:
       - "diun_data:/data:rw"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    labels:
-      - "diun.enable=true"
 
 #  mail:
 #    image: "docker.io/tvial/docker-mailserver:latest"
@@ -366,8 +320,6 @@ services:
     restart: "unless-stopped"
     volumes:
       - "errbit_mongodb:/data/db:rw"
-    labels:
-      - "diun.enable=true"
 
   errbit:
     image: "docker.io/errbit/errbit:latest"
@@ -378,8 +330,6 @@ services:
       - "RACK_ENV=production"
       - "RAILS_ENV=production"
       - "MONGO_URL=mongodb://errbit_mongodb:27017/errbit_production"
-    labels:
-      - "diun.enable=true"
 
   mailserver:
     image: "docker.io/mailserver/docker-mailserver:11.2.0"
@@ -410,8 +360,6 @@ services:
       - "SSL_CERT_PATH=/var/lib/https-portal/mail.evemonk.com/production/signed.crt"
       - "SSL_KEY_PATH=/var/lib/https-portal/mail.evemonk.com/production/domain.key"
       - "POSTMASTER_ADDRESS=igor.zubkov@gmail.com"
-    labels:
-      - "diun.enable=true"
 
   pghero:
     image: "docker.io/biow0lf/evemonk-pghero:v1.1.15"
@@ -419,8 +367,6 @@ services:
     restart: "unless-stopped"
     env_file: "./evemonk-pghero/.env"
     read_only: true
-    labels:
-      - "diun.enable=true"
 
   sidekiq-web-ui:
     image: "docker.io/biow0lf/evemonk-sidekiq:v1.1.15"
@@ -428,8 +374,6 @@ services:
     restart: "unless-stopped"
     env_file: "./evemonk-sidekiq-ui/.env"
     read_only: true
-    labels:
-      - "diun.enable=true"
 
   pg-extras:
     image: "docker.io/biow0lf/evemonk-pg-extras:v1.1.15"
@@ -437,8 +381,6 @@ services:
     restart: "unless-stopped"
     env_file: "./evemonk-pg-extras/.env"
     read_only: true
-    labels:
-      - "diun.enable=true"
 
   backend:
     image: "docker.io/biow0lf/evemonk:v0.7.27"
@@ -450,8 +392,6 @@ services:
     volumes:
       - "/srv/static/sde-20220716:/app/static:ro"
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
-    labels:
-      - "diun.enable=true"
 
   sidekiq:
     image: "docker.io/biow0lf/evemonk:v0.7.27"
@@ -467,8 +407,6 @@ services:
     volumes:
       - "/srv/static/sde-20220716:/app/static:ro"
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
-    labels:
-      - "diun.enable=true"
 
   cron:
     image: "docker.io/biow0lf/evemonk:v0.7.27"
@@ -480,12 +418,8 @@ services:
     volumes:
       - "/srv/static/sde-20220716:/app/static:ro"
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
-    labels:
-      - "diun.enable=true"
 
   irregularquiz:
     image: "docker.io/biow0lf/irregularquiz:v1.0.1"
     container_name: "evemonk_irregularquiz"
     restart: "unless-stopped"
-    labels:
-      - "diun.enable=true"
