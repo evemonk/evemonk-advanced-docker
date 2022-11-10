@@ -365,7 +365,7 @@ services:
     read_only: true
 
   backend:
-    image: "docker.io/biow0lf/evemonk:v0.7.26"
+    image: "docker.io/biow0lf/evemonk:v0.7.27"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
 #    read_only: true
@@ -376,7 +376,7 @@ services:
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   sidekiq:
-    image: "docker.io/biow0lf/evemonk:v0.7.26"
+    image: "docker.io/biow0lf/evemonk:v0.7.27"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
 #    read_only: true
@@ -391,7 +391,7 @@ services:
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   cron:
-    image: "docker.io/biow0lf/evemonk:v0.7.26"
+    image: "docker.io/biow0lf/evemonk:v0.7.27"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
 #    read_only: true
