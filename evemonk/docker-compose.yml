@@ -105,6 +105,8 @@ services:
     restart: "unless-stopped"
     command:
       - "--redis.addr=redis://redis:6379"
+    labels:
+      - "diun.enable=true"
 
   memcached:
     image: "docker.io/library/memcached:1.6.17"
