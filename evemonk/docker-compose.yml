@@ -351,7 +351,7 @@ services:
     read_only: true
 
   sidekiq-web-ui:
-    image: "docker.io/biow0lf/evemonk-sidekiq:v1.1.14"
+    image: "docker.io/biow0lf/evemonk-sidekiq:v1.1.15"
     container_name: "evemonk_sidekiq_web_ui"
     restart: "unless-stopped"
     env_file: "./evemonk-sidekiq-ui/.env"
