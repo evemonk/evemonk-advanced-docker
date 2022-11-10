@@ -20,6 +20,7 @@ volumes:
   mailserver_var_log_mail: {}
   mailserver_config: {}
   errbit_mongodb: {}
+  diun_data: {}
 
 services:
   nginx:
@@ -277,6 +278,14 @@ services:
       WATCHTOWER_TRACE: "true"
       WATCHTOWER_MONITOR_ONLY: "true"
     volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  diun:
+    image: "docker.io/crazymax/diun:4.22.0"
+    container_name: "evemonk_diun"
+    restart: "unless-stopped"
+    volumes:
+      - "diun_data:/data:rw"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
 #  mail:
