@@ -284,6 +284,11 @@ services:
     image: "docker.io/crazymax/diun:4.22.0"
     container_name: "evemonk_diun"
     restart: "unless-stopped"
+    environment:
+      DIUN_NOTIF_SLACK_WEBHOOKURL: ""
+      DIUN_PROVIDERS_DOCKER: "true"
+      DIUN_WATCH_SCHEDULE: "50 * * * *"
+#      DIUN_WATCH_SCHEDULE: "25 0 * * *"
     volumes:
       - "diun_data:/data:rw"
       - "/var/run/docker.sock:/var/run/docker.sock"
