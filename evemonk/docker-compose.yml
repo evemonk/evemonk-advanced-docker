@@ -271,7 +271,7 @@ services:
       - "./dashy/conf.yml:/app/public/conf.yml:ro"
 
   watchtower:
-    image: "docker.io/containrrr/watchtower:1.4.0"
+    image: "docker.io/containrrr/watchtower:1.5.1"
     container_name: "evemonk_watchtower"
     restart: "unless-stopped"
     environment:
