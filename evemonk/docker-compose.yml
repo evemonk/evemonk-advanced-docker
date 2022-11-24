@@ -138,7 +138,7 @@ services:
       - "diun.enable=true"
 
   prometheus:
-    image: "docker.io/prom/prometheus:v2.39.1"
+    image: "docker.io/prom/prometheus:v2.40.3"
     container_name: "evemonk_prometheus"
     restart: "unless-stopped"
     volumes:
