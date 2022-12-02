@@ -87,7 +87,6 @@ services:
                 username:password@sidekiq.evemonk.com -> http://nginx,
                 grafana.evemonk.com -> http://grafana:3000,
                 errbit.evemonk.com -> http://errbit:8080,
-                username:password@dashy.evemonk.com -> http://dashy:80,
                 plausible.evemonk.com -> http://plausible:8000,
                 username:password@prometheus.evemonk.com -> http://prometheus:9090,
                 username:password@alertmanager.evemonk.com -> http://alertmanager:9093"
@@ -262,13 +261,6 @@ services:
       - "geoip_data:/usr/share/GeoIP:ro"
     environment:
       GEOLITE2_COUNTRY_DB: "/usr/share/GeoIP/GeoLite2-Country.mmdb"
-
-  dashy:
-    image: "docker.io/lissy93/dashy:2.1.1"
-    container_name: "evemonk_dashy"
-    restart: "unless-stopped"
-    volumes:
-      - "./dashy/conf.yml:/app/public/conf.yml:ro"
 
   watchtower:
     image: "docker.io/containrrr/watchtower:1.5.1"
