@@ -354,28 +354,28 @@ services:
       - "POSTMASTER_ADDRESS=igor.zubkov@gmail.com"
 
   pghero:
-    image: "docker.io/biow0lf/evemonk-pghero:v1.1.17"
+    image: "docker.io/biow0lf/evemonk-pghero:v1.1.18"
     container_name: "evemonk_pghero"
     restart: "unless-stopped"
     env_file: "./evemonk-pghero/.env"
     read_only: true
 
   sidekiq-web-ui:
-    image: "docker.io/biow0lf/evemonk-sidekiq:v1.1.17"
+    image: "docker.io/biow0lf/evemonk-sidekiq:v1.1.18"
     container_name: "evemonk_sidekiq_web_ui"
     restart: "unless-stopped"
     env_file: "./evemonk-sidekiq-ui/.env"
     read_only: true
 
   pg-extras:
-    image: "docker.io/biow0lf/evemonk-pg-extras:v1.1.17"
+    image: "docker.io/biow0lf/evemonk-pg-extras:v1.1.18"
     container_name: "evemonk_pg_extras"
     restart: "unless-stopped"
     env_file: "./evemonk-pg-extras/.env"
     read_only: true
 
   backend:
-    image: "docker.io/biow0lf/evemonk:v0.8.1"
+    image: "docker.io/biow0lf/evemonk:v0.8.2"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
 #    read_only: true
@@ -386,7 +386,7 @@ services:
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   sidekiq:
-    image: "docker.io/biow0lf/evemonk:v0.8.1"
+    image: "docker.io/biow0lf/evemonk:v0.8.2"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
 #    read_only: true
@@ -401,7 +401,7 @@ services:
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
 
   cron:
-    image: "docker.io/biow0lf/evemonk:v0.8.1"
+    image: "docker.io/biow0lf/evemonk:v0.8.2"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
 #    read_only: true
