@@ -324,7 +324,7 @@ services:
       - "MONGO_URL=mongodb://errbit_mongodb:27017/errbit_production"
 
   mailserver:
-    image: "docker.io/mailserver/docker-mailserver:11.2.0"
+    image: "docker.io/mailserver/docker-mailserver:11.3.1"
     container_name: "evemonk_mailserver"
     # If the FQDN for your mail-server is only two labels (eg: example.com),
     # you can assign this entirely to `hostname` and remove `domainname`.
