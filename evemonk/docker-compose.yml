@@ -180,7 +180,7 @@ services:
     restart: "unless-stopped"
 
   alertmanager:
-    image: "docker.io/prom/alertmanager:v0.24.0"
+    image: "docker.io/prom/alertmanager:v0.25.0"
     container_name: "evemonk_alertmanager"
     restart: "unless-stopped"
     ports:
