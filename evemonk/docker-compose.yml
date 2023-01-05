@@ -275,7 +275,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
   diun:
-    image: "docker.io/crazymax/diun:4.22.0"
+    image: "docker.io/crazymax/diun:4.24.0"
     container_name: "evemonk_diun"
     restart: "unless-stopped"
     environment:
