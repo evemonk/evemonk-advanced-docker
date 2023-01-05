@@ -3,6 +3,7 @@ version: "3.7"
 volumes:
   postresql13_data: {}
   postresql14_data: {}
+  postgresql15_data: {}
   plausible_db_data: {}
   plausible_events_db_data: {}
   redis_data: {}
@@ -354,7 +355,7 @@ services:
       - "POSTMASTER_ADDRESS=igor.zubkov@gmail.com"
 
   pghero:
-    image: "docker.io/biow0lf/evemonk-pghero:v1.1.23"
+    image: "docker.io/biow0lf/evemonk-pghero:v1.1.24"
     container_name: "evemonk_pghero"
     restart: "unless-stopped"
     env_file: "./evemonk-pghero/.env"
