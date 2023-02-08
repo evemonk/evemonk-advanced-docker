@@ -264,7 +264,7 @@ services:
       GEOLITE2_COUNTRY_DB: "/usr/share/GeoIP/GeoLite2-Country.mmdb"
 
   watchtower:
-    image: "docker.io/containrrr/watchtower:1.5.1"
+    image: "docker.io/containrrr/watchtower:1.5.3"
     container_name: "evemonk_watchtower"
     restart: "unless-stopped"
     environment:
