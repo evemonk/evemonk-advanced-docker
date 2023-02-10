@@ -408,9 +408,9 @@ services:
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.blog.rule=Host(`evemonk.com`)"
-      - "traefik.http.routers.blog.tls=true"
-      - "traefik.http.routers.blog.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.backend.rule=Host(`evemonk.com`)"
+      - "traefik.http.routers.backend.tls=true"
+      - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
 
   sidekiq:
     image: "docker.io/biow0lf/evemonk:v0.8.23"
