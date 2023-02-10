@@ -34,6 +34,9 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
+      - "--certificatesresolvers.letsencrypt.acme.email=igor.zubkov@gmail.com"
+#      - "--certificatesresolvers.letsencrypt.acme.storage=acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
     ports:
       - "80:80"
       - "443:443"
@@ -405,6 +408,9 @@ services:
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.blog.rule=Host(`evemonk.com`)"
+      - "traefik.http.routers.blog.tls=true"
+      - "traefik.http.routers.blog.tls.certresolver=letsencrypt"
 
   sidekiq:
     image: "docker.io/biow0lf/evemonk:v0.8.23"
