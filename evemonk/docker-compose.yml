@@ -29,11 +29,14 @@ services:
     container_name: "evemonk_traefik"
     restart: "unless-stopped"
     command:
+      - "--logLevel=DEBUG"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
     ports:
+      - "80:80"
       - "443:443"
-      - "80:8080"
     volumes:
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
@@ -400,6 +403,8 @@ services:
     volumes:
       - "/srv/static/sde-20220716:/app/static:ro"
       - "./evemonk/airbrake.rb:/app/config/initializers/airbrake.rb:ro"
+    labels:
+      - "traefik.enable=true"
 
   sidekiq:
     image: "docker.io/biow0lf/evemonk:v0.8.23"
