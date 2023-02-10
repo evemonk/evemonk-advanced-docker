@@ -24,73 +24,87 @@ volumes:
   diun_data: {}
 
 services:
-  nginx:
-    image: "docker.io/library/nginx:1.22.1"
-    container_name: "evemonk_nginx"
+  traefik:
+    image: "docker.io/library/traefik:v2.9.6"
+    container_name: "evemonk_traefik"
     restart: "unless-stopped"
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
+    ports:
+      - "443:443"
+      - "80:8080"
     volumes:
-      - "./nginx-evemonk.conf:/etc/nginx/conf.d/default.conf:ro"
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
-  pghero_nginx:
-    image: "docker.io/library/nginx:1.22.1"
-    container_name: "evemonk_pghero_nginx"
-    restart: "unless-stopped"
-    volumes:
-      - "./evemonk-pghero-nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
+#  nginx:
+#    image: "docker.io/library/nginx:1.22.1"
+#    container_name: "evemonk_nginx"
+#    restart: "unless-stopped"
+#    volumes:
+#      - "./nginx-evemonk.conf:/etc/nginx/conf.d/default.conf:ro"
 
-  nginx_static:
-    image: "docker.io/library/nginx:1.22.1"
-    container_name: "evemonk_nginx_static"
-    restart: "unless-stopped"
-    volumes:
-      - "/srv/static:/var/www:ro"
-      - "./nginx-static.conf:/etc/nginx/conf.d/default.conf:ro"
+#  pghero_nginx:
+#    image: "docker.io/library/nginx:1.22.1"
+#    container_name: "evemonk_pghero_nginx"
+#    restart: "unless-stopped"
+#    volumes:
+#      - "./evemonk-pghero-nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
+
+#  nginx_static:
+#    image: "docker.io/library/nginx:1.22.1"
+#    container_name: "evemonk_nginx_static"
+#    restart: "unless-stopped"
+#    volumes:
+#      - "/srv/static:/var/www:ro"
+#      - "./nginx-static.conf:/etc/nginx/conf.d/default.conf:ro"
 
 #  blog:
 #    image: "biow0lf/evemonk-blog:latest"
 #    container_name: "evemonk_blog"
 #    restart: "unless-stopped"
 
-  blog:
-    image: "docker.io/library/nginx:1.22.1"
-    container_name: "evemonk_blog"
-    restart: "unless-stopped"
+#  blog:
+#    image: "docker.io/library/nginx:1.22.1"
+#    container_name: "evemonk_blog"
+#    restart: "unless-stopped"
 
 #  nginx_exporter:
 #    image: "docker.io/nginx/nginx-prometheus-exporter:0.8.0"
 #    container_name: "evemonk_nginx_exporter"
 #    restart: "unless-stopped"
 
-  https_portal:
-    image: "docker.io/steveltn/https-portal:1.23.0"
-    container_name: "evemonk_https_portal"
-    restart: "unless-stopped"
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - "https_portal:/var/lib/https-portal:rw"
-      - "https_logs:/var/log/nginx:rw"
-    environment:
-      STAGE: "production"
-      WEBSOCKET: "true"
-      LISTEN_IPV6: "true"
-      DOMAINS: "evemonk.com -> http://nginx,
-                blog.evemonk.com -> http://blog,
-                static.evemonk.com -> http://nginx_static,
-                www.evemonk.com => https://evemonk.com,
-                mail.evemonk.com,
-                irregularquiz.rpisarev.org.ua -> http://irregularquiz:5000,
-                imageproxy.evemonk.com -> http://imageproxy:8081,
-                username:password@cadvisor.evemonk.com -> http://cadvisor:8080,
-                pghero.evemonk.com -> http://pghero_nginx,
-                pg-extras.evemonk.com -> http://nginx,
-                username:password@sidekiq.evemonk.com -> http://nginx,
-                grafana.evemonk.com -> http://grafana:3000,
-                errbit.evemonk.com -> http://errbit:8080,
-                plausible.evemonk.com -> http://plausible:8000,
-                username:password@prometheus.evemonk.com -> http://prometheus:9090,
-                username:password@alertmanager.evemonk.com -> http://alertmanager:9093"
+#  https_portal:
+#    image: "docker.io/steveltn/https-portal:1.23.0"
+#    container_name: "evemonk_https_portal"
+#    restart: "unless-stopped"
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - "https_portal:/var/lib/https-portal:rw"
+#      - "https_logs:/var/log/nginx:rw"
+#    environment:
+#      STAGE: "production"
+#      WEBSOCKET: "true"
+#      LISTEN_IPV6: "true"
+#      DOMAINS: "evemonk.com -> http://nginx,
+#                blog.evemonk.com -> http://blog,
+#                static.evemonk.com -> http://nginx_static,
+#                www.evemonk.com => https://evemonk.com,
+#                mail.evemonk.com,
+#                irregularquiz.rpisarev.org.ua -> http://irregularquiz:5000,
+#                imageproxy.evemonk.com -> http://imageproxy:8081,
+#                username:password@cadvisor.evemonk.com -> http://cadvisor:8080,
+#                pghero.evemonk.com -> http://pghero_nginx,
+#                pg-extras.evemonk.com -> http://nginx,
+#                username:password@sidekiq.evemonk.com -> http://nginx,
+#                grafana.evemonk.com -> http://grafana:3000,
+#                errbit.evemonk.com -> http://errbit:8080,
+#                plausible.evemonk.com -> http://plausible:8000,
+#                username:password@prometheus.evemonk.com -> http://prometheus:9090,
+#                username:password@alertmanager.evemonk.com -> http://alertmanager:9093"
 
   redis:
     image: "docker.io/library/redis:7.0.8"
